@@ -1,0 +1,286 @@
+<title>Bodega Social Prototyp</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: three layout variants, each a row of phone screens; tabs switch between them.
+   Palette: a neutral grey canvas instead of white, one red accent for actions and the best price. */
+:root {
+  --page: #d9d8d6;
+  --shell: #eceae7;
+  --app: #f3f2f0;
+  --card: #e7e5e2;
+  --ink: #1b1a18;
+  --muted: #5f5c57;
+  --line: #cbc8c3;
+  --accent: #b23a22;
+  --ok: #3f6b4a;
+  --font-text: "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --page: #1f1e1d; --shell: #2b2a28; --app: #333230; --card: #3d3b38;
+    --ink: #f2f0ec; --muted: #b3afa8; --line: #4e4b47; --accent: #e3715a; --ok: #7fae8b;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --page: #1f1e1d; --shell: #2b2a28; --app: #333230; --card: #3d3b38;
+  --ink: #f2f0ec; --muted: #b3afa8; --line: #4e4b47; --accent: #e3715a; --ok: #7fae8b;
+  color-scheme: dark;
+}
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--page); color: var(--ink);
+  font: 15px/1.45 var(--font-text);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 26px 48px;
+}
+h1 { font-size: 27px; line-height: 1.12; margin: 0 0 6px; letter-spacing: -.015em; text-wrap: balance; }
+.lead { color: var(--muted); max-width: 64ch; margin: 0 0 20px; }
+.mono { font-family: var(--font-mono); font-size: 13px; letter-spacing: .02em; }
+.kicker { font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+
+.tabs { display: flex; border: 1px solid var(--ink); width: max-content; max-width: 100%; margin-bottom: 8px; flex-wrap: wrap; }
+.tabs button { appearance: none; border: 0; border-right: 1px solid var(--ink); background: transparent; color: var(--ink);
+  font: 600 14px var(--font-text); padding: 11px 15px; cursor: pointer; }
+.tabs button:last-child { border-right: 0; }
+.tabs button[aria-selected="true"] { background: var(--ink); color: var(--app); }
+.tabs button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.caption { color: var(--muted); margin: 0 0 22px; max-width: 64ch; }
+
+.stage { display: grid; grid-template-columns: minmax(0,1fr); gap: 22px; }
+@media (min-width: 760px) { .stage { grid-template-columns: repeat(auto-fit, minmax(290px, 340px)); justify-content: start; } }
+.phone { background: var(--shell); border: 1px solid var(--line); border-radius: 26px; padding: 12px; min-width: 0; max-width: 360px; width: 100%; }
+.screen { background: var(--app); border-radius: 16px; overflow: hidden; min-width: 0; }
+.bar { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 13px 13px 9px; }
+.bar h2 { font-size: 21px; margin: 0; letter-spacing: -.015em; }
+.ico { width: 29px; height: 29px; flex: none; border: 1px solid var(--ink); border-radius: 50%; display: grid; place-items: center; font-size: 13px; }
+.seg { display: grid; grid-template-columns: repeat(3,1fr); border: 1px solid var(--ink); margin: 0 13px 11px; }
+.seg div { padding: 8px 7px; font-size: 13px; font-weight: 600; border-right: 1px solid var(--ink); min-width: 0; }
+.seg div:last-child { border-right: 0; }
+.seg .on { background: var(--ink); color: var(--app); }
+.seg small { display: block; font: 400 12px var(--font-mono); opacity: .7; }
+.chips { display: flex; gap: 6px; padding: 0 13px 11px; overflow-x: auto; }
+.chips span { border: 1px solid var(--ink); padding: 5px 9px; font-size: 13px; white-space: nowrap; }
+.chips .on { background: var(--ink); color: var(--app); }
+
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 0 13px 13px; }
+.tile { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 9px; min-width: 0; }
+.ph { aspect-ratio: 4/3; max-width: 100%; border-radius: 7px; margin-bottom: 7px;
+  background: repeating-linear-gradient(135deg, #c4c1ba 0 9px, #b7b4ac 9px 18px); }
+.tile b { display: block; font-size: 14px; line-height: 1.25; }
+.tile .sub { color: var(--muted); font-size: 13px; display: flex; justify-content: space-between; gap: 6px; margin-top: 3px; }
+.stars { color: var(--ink); font-size: 12px; white-space: nowrap; }
+
+.feed { display: flex; flex-direction: column; gap: 11px; padding: 0 13px 13px; }
+.post { background: var(--card); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.post .ph { border-radius: 0; margin: 0; aspect-ratio: 16/10; }
+.post .m { padding: 9px 11px 11px; }
+.post .m b { font-size: 15px; display: block; line-height: 1.25; }
+.post .m p { margin: 4px 0 0; color: var(--muted); font-size: 13px; }
+.post .m .acts { display: flex; gap: 12px; margin-top: 7px; font-size: 13px; color: var(--muted); }
+
+.list { padding: 0 13px 11px; }
+.row { display: grid; grid-template-columns: 1fr auto; gap: 2px 10px; padding: 10px 0; border-bottom: 1px solid var(--line); min-width: 0; }
+.row b { font-size: 14px; font-weight: 600; }
+.row .s { color: var(--muted); font-size: 13px; }
+.row .p { font: 600 14px var(--font-mono); text-align: right; align-self: center; white-space: nowrap; }
+.row .p.best { color: var(--accent); }
+.row .p.was { color: var(--muted); font-weight: 400; text-decoration: line-through; font-size: 13px; }
+.panel { margin: 0 13px 13px; border: 1px solid var(--ink); background: var(--card); padding: 11px; }
+.panel h3 { margin: 0 0 5px; font-size: 14px; }
+.panel p { margin: 0; color: var(--muted); font-size: 13px; }
+.panel + .panel { margin-top: -4px; }
+.btn { display: block; width: calc(100% - 26px); margin: 0 13px 9px; padding: 11px; text-align: center;
+  font: 600 14px var(--font-text); border: 1px solid var(--ink); background: var(--ink); color: var(--app); }
+.btn.sec { background: transparent; color: var(--ink); }
+.pay { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin: 0 13px 13px; }
+.pay span { border: 1px solid var(--ink); padding: 10px; text-align: center; font-size: 13px; font-weight: 600; }
+.slider { margin: 0 13px 11px; }
+.track { height: 3px; background: var(--line); position: relative; margin: 9px 0 5px; }
+.track i { position: absolute; left: 0; top: 0; bottom: 0; width: 45%; background: var(--ink); }
+.track b { position: absolute; left: 45%; top: -5px; width: 13px; height: 13px; border-radius: 50%; background: var(--ink); }
+.note-in { font-size: 13px; color: var(--muted); }
+.flag { color: var(--accent); font-weight: 600; }
+
+.sheet { margin: 0 13px 13px; border: 1px solid var(--ink); background: var(--card); }
+.sheet .h { padding: 10px 11px; border-bottom: 1px solid var(--line); font-size: 14px; font-weight: 600; }
+.sheet .b { padding: 10px 11px; font-size: 13px; color: var(--muted); }
+.sheet .b b { color: var(--ink); }
+
+.view { display: none; } .view.on { display: block; }
+.notes { display: grid; gap: 16px; margin-top: 30px; grid-template-columns: minmax(0,1fr); }
+@media (min-width: 760px) { .notes { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); } }
+.note { border-top: 1px solid var(--ink); padding-top: 9px; }
+.note h3 { font-size: 15px; margin: 0 0 4px; }
+.note p { margin: 0; color: var(--muted); font-size: 14px; }
+</style>
+
+<h1>Bodega Social Prototyp</h1>
+<p class="lead">Kein Einkaufen in der App. Stattdessen: Gerichte, ein Feed, geteilte Listen, Rechnung teilen und der Preisvergleich über die Märkte ums Eck. Drei Anordnungen derselben Funktionen, grauer Grundton statt Weiß.</p>
+
+<div class="tabs" role="tablist" aria-label="Layout wählen">
+  <button role="tab" aria-selected="true" data-v="a">A · Gerichte zuerst</button>
+  <button role="tab" aria-selected="false" data-v="b">B · Feed zuerst</button>
+  <button role="tab" aria-selected="false" data-v="c">C · Listen zuerst</button>
+</div>
+<p class="caption" id="cap">Start auf den Gerichten, Feed und Liste eine Ebene tiefer. Vertraut für alle, die die erste App kennen.</p>
+
+<!-- ============ LAYOUT A ============ -->
+<section class="view on" id="v-a" aria-label="Layout A">
+<div class="stage">
+
+  <div class="phone"><div class="screen">
+    <div class="bar"><h2>Gerichte</h2><div class="ico">+</div></div>
+    <div class="seg"><div class="on">Alle<small>331</small></div><div>Für mich<small>12</small></div><div>Freunde<small>8</small></div></div>
+    <div class="chips"><span class="on">Unter €2</span><span>Vegan</span><span>Vegetarisch</span><span>≤ 30 Min</span></div>
+    <div class="grid2">
+      <div class="tile"><div class="ph"></div><b>Kaiserschmarrn</b><div class="sub"><span>40 min</span><span class="stars">★ 4,6 · 38</span></div></div>
+      <div class="tile"><div class="ph"></div><b>Tzatziki</b><div class="sub"><span>40 min</span><span class="stars">★ 4,8 · 12</span></div></div>
+      <div class="tile"><div class="ph"></div><b>Grießbrei</b><div class="sub"><span>15 min</span><span class="stars">★ 4,2 · 7</span></div></div>
+      <div class="tile"><div class="ph"></div><b>Tomatensalat</b><div class="sub"><span>15 min</span><span class="stars">★ 4,5 · 21</span></div></div>
+    </div>
+  </div></div>
+
+  <div class="phone"><div class="screen">
+    <div class="bar"><h2>Einkaufsliste</h2><div class="ico">↗</div></div>
+    <p class="kicker" style="padding:0 13px 7px">Geteilt mit Mara, Jonas</p>
+    <div class="list">
+      <div class="row"><b>Vollmilch 1 l</b><div class="s">2 Stk · Marke frei</div><div class="p">€2,38</div></div>
+      <div class="row"><b>Eier Freiland 10 Stk</b><div class="s">2 Stk · <span class="flag">Marke fix: Toni's</span></div><div class="p">€5,98</div></div>
+      <div class="row"><b>Kristallzucker 1 kg</b><div class="s">2 Stk · Marke frei</div><div class="p">€2,58</div></div>
+    </div>
+    <div class="slider">
+      <div class="kicker">Umkreis</div>
+      <div class="track"><i></i><b></b></div>
+      <div class="note-in">800 m zu Fuß · 4 Märkte</div>
+    </div>
+    <a class="btn" href="#">Günstigsten Einkauf suchen</a>
+  </div></div>
+
+  <div class="phone"><div class="screen">
+    <div class="bar"><h2>Preisvergleich</h2><div class="ico">€</div></div>
+    <div class="seg"><div class="on">Route<small>2 Märkte</small></div><div>Ein Markt<small>Spar</small></div><div>Pro Stück<small>Beste</small></div></div>
+    <div class="sheet"><div class="h">Stopp 1 · Hofer · 240 m</div><div class="b">
+      Vollmilch <b>€2,18</b> · Kristallzucker <b>€2,29</b></div></div>
+    <div class="sheet"><div class="h">Stopp 2 · Billa · 610 m</div><div class="b">
+      Eier Toni's <b>€5,49</b> <span style="text-decoration:line-through">€5,98</span> · Aktion</div></div>
+    <div class="list">
+      <div class="row"><b>Summe Route</b><div class="s">statt €10,94 in einem Markt</div><div class="p best">€9,96</div></div>
+    </div>
+    <div class="panel"><h3>Rabattmarkerl</h3><p>Bei Billa läuft gerade eine Markerl-Aktion auf Molkereiprodukte. Hast du welche? Dann rechne ich sie ein.</p></div>
+    <a class="btn sec" href="#">Markerl habe ich · −10 %</a>
+  </div></div>
+
+</div></section>
+
+<!-- ============ LAYOUT B ============ -->
+<section class="view" id="v-b" aria-label="Layout B">
+<div class="stage">
+
+  <div class="phone"><div class="screen">
+    <div class="bar"><h2>Feed</h2><div class="ico">✉</div></div>
+    <div class="chips"><span class="on">Trending</span><span>Regional</span><span>Neu</span><span>Freunde</span></div>
+    <div class="feed">
+      <div class="post"><div class="ph"></div><div class="m"><b>Kaiserschmarrn mit Zwetschkenröster</b>
+        <p>Lena · Trending diese Woche</p>
+        <div class="acts"><span>★ 4,6</span><span>38 Bewertungen</span><span>12 Kommentare</span></div></div></div>
+      <div class="post"><div class="ph"></div><div class="m"><b>Marillenknödel aus Topfenteig</b>
+        <p>Jonas · Regional · Wachau</p>
+        <div class="acts"><span>★ 4,9</span><span>7 Bewertungen</span><span>3 Kommentare</span></div></div></div>
+    </div>
+  </div></div>
+
+  <div class="phone"><div class="screen">
+    <div class="bar"><h2>Kaiserschmarrn</h2><div class="ico">♡</div></div>
+    <div class="ph" style="aspect-ratio:16/10;border-radius:0;margin:0"></div>
+    <div class="list">
+      <div class="row"><b>40 min · 2 Portionen</b><div class="s">Mehlspeise · österreichisch</div><div class="p">★ 4,6</div></div>
+    </div>
+    <div class="sheet"><div class="h">Bewertungen · 38</div>
+      <div class="b"><b>Mara</b> ★★★★★ · „Mit etwas mehr Butter in der Pfanne wird er flaumiger."</div>
+      <div class="b" style="border-top:1px solid var(--line)"><b>Jonas</b> ★★★★☆ · „Rosinen hab ich weggelassen, passt auch."</div>
+    </div>
+    <a class="btn sec" href="#">Kommentieren</a>
+    <a class="btn" href="#">Zutaten auf die Liste</a>
+  </div></div>
+
+  <div class="phone"><div class="screen">
+    <div class="bar"><h2>Rechnung teilen</h2><div class="ico">⌁</div></div>
+    <div class="panel"><h3>Kassenbon scannen</h3><p>Foto machen, Posten werden erkannt und den Leuten zugeordnet.</p></div>
+    <div class="list">
+      <div class="row"><b>Obstsalat</b><div class="s">Mara · 2 ×</div><div class="p">€7,98</div></div>
+      <div class="row"><b>Bergkäse</b><div class="s">Du · 2 ×</div><div class="p">€6,98</div></div>
+      <div class="row"><b>Dein Anteil</b><div class="s">von €14,96</div><div class="p best">€6,98</div></div>
+    </div>
+    <div class="pay"><span> Apple Pay</span><span>PayPal</span></div>
+    <p class="note-in" style="padding:0 13px 13px">Im Prototyp nur angedeutet, nicht angebunden.</p>
+  </div></div>
+
+</div></section>
+
+<!-- ============ LAYOUT C ============ -->
+<section class="view" id="v-c" aria-label="Layout C">
+<div class="stage">
+
+  <div class="phone"><div class="screen">
+    <div class="bar"><h2>Heute</h2><div class="ico">≡</div></div>
+    <p class="kicker" style="padding:0 13px 7px">Liste, Gerichte und Feed in einer Spalte</p>
+    <div class="list">
+      <div class="row"><b>Einkaufsliste · Wohnung</b><div class="s">3 offen · geteilt mit 2</div><div class="p">€9,96</div></div>
+      <div class="row"><b>Kaiserschmarrn</b><div class="s">40 min · ★ 4,6 · von Lena</div><div class="p">€1,01</div></div>
+      <div class="row"><b>Tzatziki</b><div class="s">40 min · ★ 4,8 · gespeichert</div><div class="p">€3,20</div></div>
+      <div class="row"><b>Offene Rechnung</b><div class="s">Mara · seit Freitag</div><div class="p best">€6,98</div></div>
+    </div>
+    <a class="btn" href="#">Rezept fotografieren</a>
+  </div></div>
+
+  <div class="phone"><div class="screen">
+    <div class="bar"><h2>Rezept aus Foto</h2><div class="ico">◎</div></div>
+    <p class="kicker" style="padding:0 13px 7px">Premium</p>
+    <div class="ph" style="aspect-ratio:4/3;border-radius:0;margin:0"></div>
+    <div class="sheet"><div class="h">Erkannt: Grießnockerlsuppe</div>
+      <div class="b">1 l Suppe · 1 Ei · 40 g Butter · 100 g Grieß<br><b>Kochdauer geschätzt: 35 min</b></div>
+      <div class="b" style="border-top:1px solid var(--line)">Die Rastzeit stand nicht im Text. Aus drei ähnlichen Rezepten ergänzt: <b>20 min rasten</b>.</div>
+    </div>
+    <a class="btn sec" href="#">Anpassen</a>
+    <a class="btn" href="#">So speichern</a>
+  </div></div>
+
+  <div class="phone"><div class="screen">
+    <div class="bar"><h2>Wohnung</h2><div class="ico">+</div></div>
+    <div class="seg"><div class="on">Chat<small>2 neu</small></div><div>Liste<small>3</small></div><div>Rechnung<small>1</small></div></div>
+    <div class="feed">
+      <div class="post"><div class="m"><b>Mara</b><p>Hab den Kaiserschmarrn probiert, schmeckt top</p></div></div>
+      <div class="post"><div class="m"><b>Du</b><p>Milch und Zucker sind auf der Liste</p></div></div>
+    </div>
+    <div class="panel"><h3>Geteilt</h3><p>Liste, Rechnung und Rezepte liegen in derselben Gruppe. Wer dazukommt, sieht alles.</p></div>
+  </div></div>
+
+</div></section>
+
+<div class="notes">
+  <div class="note"><h3>Preise</h3><p>Billa, Spar, Hofer: Der Vergleich braucht Händlerdaten. Hier stehen Beispielwerte.</p></div>
+  <div class="note"><h3>Rabattmarkerl</h3><p>Die App sagt nur, dass es welche gibt. Eingerechnet werden sie erst, wenn du bestätigst, dass du sie hast.</p></div>
+  <div class="note"><h3>Marke</h3><p>Standard ist das günstigste Produkt. Legst du eine Marke fest, sucht der Vergleich nur noch diese.</p></div>
+  <div class="note"><h3>Foto zu Rezept</h3><p>Premium, später. Vor dem Speichern wird immer gefragt, ob es so passt.</p></div>
+</div>
+
+<script>
+  var caps = {
+    a: 'Start auf den Gerichten, Feed und Liste eine Ebene tiefer. Vertraut für alle, die die erste App kennen.',
+    b: 'Start im Feed. Rezepte kommen über andere Leute herein, Bewertungen und Kommentare stehen weit vorn.',
+    c: 'Alles in einer Spalte: Liste, Gerichte, offene Rechnungen. Am wenigsten Tippen, am dichtesten.'
+  };
+  var tabs = document.querySelectorAll('[role="tab"]');
+  tabs.forEach(function (b) {
+    b.addEventListener('click', function () {
+      tabs.forEach(function (x) { x.setAttribute('aria-selected', String(x === b)); });
+      document.querySelectorAll('.view').forEach(function (v) { v.classList.toggle('on', v.id === 'v-' + b.dataset.v); });
+      document.getElementById('cap').textContent = caps[b.dataset.v];
+    });
+  });
+</script>
