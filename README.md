@@ -22,6 +22,9 @@ Rechnung teilen und ein Preisvergleich über die Märkte in der Nähe.
   für jeden Tag der laufenden Woche.
 - `lib/domain/stores.ts` — Filialen mit Adresse, Öffnungszeiten, Gehzeit, Route.
 - `lib/domain/trip.ts` — Abhaken im Markt, Normalpreis gegen bezahlt, Ersparnis.
+- `data/recipes.json` + `lib/domain/recipes.ts` — 331 Rezepte, 357 Zutaten im
+  Katalog, 14 EU-Allergene, 20 Küchen (aus blackbox-app, Branch round-2);
+  Zutatensuche, Allergenfilter, Rezept → Einkaufsliste mit Portionen.
 - `design/layouts.html` — drei Layout-Entwürfe zum Öffnen im Browser.
 
 ## Geplant

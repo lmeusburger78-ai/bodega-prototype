@@ -75,6 +75,8 @@ export type ShelfOffer = {
 
 export type ListLine = {
   query: string
+  /** catalogue key when the line comes from a recipe (data/recipes.json) */
+  productKey?: string
   /** packs wanted when an amount is named, otherwise how many base units (e.g. 2 kg) */
   qty: number
   /** exact pack size the shopper asked for, e.g. 6 Stk or 0.5 l */
