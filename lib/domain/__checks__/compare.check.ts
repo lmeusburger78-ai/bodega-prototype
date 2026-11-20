@@ -47,6 +47,8 @@ assert.equal(bestOffer({ query: 'Milch', qty: 1, requiredSeals: ['eu-bio'] }, mi
 assert.equal(dealTotal(2, 2, { kind: 'buy-pay', buy: 2, pay: 1 }), 2)
 const deal = bestOffer({ query: 'Kaffee', qty: 1, amount: { value: 0.5, unit: 'kg' } },
   [o({ retailer: 'spar', brand: 'Tchibo', pack: { value: 0.5, unit: 'kg' }, price: 6.99, deal: { kind: 'buy-pay', buy: 2, pay: 1 } })], me).best!
+// 1 pack in the cart: full price, the deal is only a hint
+assert.equal(deal.total, 6.99)
 assert.match(deal.hint!, /2 Packungen kosten gleich viel/)
 
 // loyalty only if member

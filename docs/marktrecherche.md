@@ -38,8 +38,8 @@ nichts davon durch einen eigenen Abruf bestätigt. Der Code führt das als
 |---|---|---|
 | Alle Märkte mit Online-Preisen | ja | Liste oben; wöchentlich neu prüfen, ob Ketten dazukommen |
 | Ganzes Sortiment ins Verzeichnis | ja, für Ketten mit „Sortiment online“ | Lidl/PENNY nur Aktionen |
-| Täglich aktualisieren | ja | eigener Server-Job, siehe unten |
-| Preis + Angebote berücksichtigen | ja | 1+1, −x % ab n Stk: in `compare.ts` |
+| Täglich Preise, monatlich Sortiment und Filialen | ja | eigener Server-Job, siehe unten |
+| Preis + Angebote berücksichtigen | ja | Mengenaktion wird nur eingerechnet, wenn die Menge im Einkaufswagen sie erfüllt; sonst nur Hinweis |
 | Kundenkarten-Rabatte, wenn man Anspruch hat | ja | Nutzer gibt seine Programme an |
 | Rabattmarkerl | ja | wird abgefragt, nie automatisch abgezogen |
 | Radius / bestimmte Märkte | ja | `retailers.ts` |
@@ -64,17 +64,59 @@ Für den Prototyp reichen Beispieldaten. Für den echten Betrieb:
 - Empfehlung: Anwalt bzw. WKO-Beratung, und bei den Ketten direkt um einen
   Datenzugang anfragen.
 
-## Täglicher Abgleich (Plan)
+## Abgleich: täglich und monatlich
 
-1. Ein Server-Job läuft einmal täglich früh morgens (Aktionen wechseln meist
-   Montag/Donnerstag).
-2. Je Kette ein Adapter: liest Preise, Aktionen, Grundpreis, Siegel und Packung,
-   schreibt `ShelfOffer`-Datensätze mit `seenAt` und `source`.
-3. Plausibilitätsprüfung: Preis um mehr als 50 % geändert, Grundpreis passt
-   nicht zur Packung, Siegel verschwunden → Datensatz zurückhalten, nicht anzeigen.
-4. Die App zeigt bei jedem Preis das Datum („Preis vom 20.11.“).
-5. Fällt eine Kette aus, bleibt ihr letzter Stand höchstens 2 Tage sichtbar,
-   danach ausgegraut.
+**Täglich** (früh morgens): Preise, Aktionen, Mengenaktionen, Kundenkarten-Preise,
+Rabattmarkerl. Jeder Preis wird als Datensatz abgelegt (`lib/domain/history.ts`):
+`data/prices/JJJJ-MM-TT.jsonl`, eine Zeile je Artikel und Kette mit Preis,
+Streichpreis, Aktionstext der Kette, Packung, Siegel, Quelle. Nichts wird
+überschrieben, jeder Tag bleibt nachvollziehbar.
+
+**Monatlich**: ganzes Sortiment und Filialliste je Kette. Ergebnis: neue und
+ausgelistete Artikel, neu eröffnete und geschlossene Filialen (`diffAssortment`).
+
+**Erklärung bei Preisänderungen** (`explainChanges`), geprüft in dieser Reihenfolge:
+
+1. Aktionstext oder Streichpreis der Kette selbst
+2. neue Mengenaktion (1+1, −x % ab n Stk)
+3. Aktion ausgelaufen (Preis steigt zurück)
+4. Kampagne der Kette: mindestens 5 Artikel einer Marke am selben Tag um denselben
+   Prozentsatz („−25 % auf alle Ja! Natürlich“)
+5. Mehrwertsteuer: Steuersatz geändert, oder Artikel bei 3 oder mehr Ketten am
+   selben Tag um denselben Faktor
+6. Packung kleiner oder größer bei gleichem Preis (Shrinkflation)
+7. dauerhafte Preissenkung, die die Kette bewirbt („dauerhaft günstiger“)
+8. sonst: „unerklärt“, zur Prüfung durch einen Menschen
+
+Eine automatische Websuche je Preisänderung wäre bei zehntausenden Artikeln zu
+teuer und unzuverlässig. Die Erklärung kommt deshalb aus den Daten selbst. Nur die
+unerklärten Fälle werden gesammelt und gezielt nachrecherchiert.
+
+**Plausibilität**: Preis um mehr als 50 % geändert ohne Aktionskennzeichen, oder
+Preis 0 → Datensatz zurückhalten, nicht anzeigen. Fällt eine Kette aus, bleibt ihr
+letzter Stand höchstens 2 Tage sichtbar, mit Datum.
+
+## Kennzeichnung in der App
+
+| Fall | Anzeige |
+|---|---|
+| Preis da, Filiale bestätigt | „in der Filiale verfügbar“ |
+| Preis da, nur Online-Shop | „laut Online-Shop verfügbar, Filiale nicht bestätigt“ |
+| Preis da, keine Bestandsangabe | „Preis bekannt, Verfügbarkeit nicht bestätigt“ |
+| Lidl/PENNY, Artikel nicht in Aktion | „kein Online-Preis: diese Kette veröffentlicht nur Aktionen“ |
+| Kette mit Vollsortiment, Artikel fehlt | „nicht im Sortiment“ |
+
+Hat der Nutzer Märkte selbst ausgewählt, wird ein Angebot ohne bestätigte
+Verfügbarkeit nicht in die Route eingerechnet, sondern mit dem Grund angezeigt.
+So landet niemand in einem Markt, der den Artikel womöglich nicht hat.
+
+## Wie macht das heisse-preise.io?
+
+Laut Projektbeschreibung holt es die Daten täglich von den Websites bzw.
+Online-Shops der Ketten, also dieselben Quellen wie oben. Lidl und PENNY
+veröffentlichen kein Vollsortiment mit Preisen, deshalb zeigt auch
+heisse-preise.io dort nur Aktionsangebote. Die Einschränkung liegt also bei den
+Ketten, nicht bei der Technik.
 
 ## Offen
 

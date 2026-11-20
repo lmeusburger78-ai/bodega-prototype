@@ -87,3 +87,21 @@ const GROUP_ORDER: ChainGroup[] = ['discounter', 'supermarket', 'drugstore', 'on
 export const chainsForPicker = () =>
   [...CHAINS].filter(c => c.coverage !== 'excluded')
     .sort((a, b) => GROUP_ORDER.indexOf(a.group) - GROUP_ORDER.indexOf(b.group))
+
+/**
+ * What the app writes next to a chain for one list line. No offer never means
+ * "nicht verfügbar" without saying why.
+ */
+export function shelfLabel(chain: Chain, offer?: { availability: 'branch' | 'online' | 'unknown' | 'out' }): string {
+  if (offer) {
+    switch (offer.availability) {
+      case 'branch': return 'in der Filiale verfügbar'
+      case 'online': return 'laut Online-Shop verfügbar, Filiale nicht bestätigt'
+      case 'unknown': return 'Preis bekannt, Verfügbarkeit nicht bestätigt'
+      case 'out': return 'derzeit nicht verfügbar'
+    }
+  }
+  if (chain.coverage === 'offers-only') return 'kein Online-Preis: diese Kette veröffentlicht nur Aktionen'
+  if (chain.coverage === 'full') return 'nicht im Sortiment'
+  return 'keine Preisangaben online'
+}
