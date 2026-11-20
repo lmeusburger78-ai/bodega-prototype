@@ -200,6 +200,25 @@ mit Grundpreis "50 kg (0,03 € je 1 kg)".
 `tools/ingest.mts`. Artikelnummern zeigt keine Seite im Text, `sku` ist deshalb aus
 Marke, Name und Packung gebildet.
 
+## Wie Preisrunter das macht (Stand 20.11.2026, nach deren eigenen Angaben)
+
+- Preisrunter nennt als Grundlage „Preisdaten, die von Händlern bzw. deren technischen
+  Schnittstellen übermittelt wurden“. Es hat Händler, die mich als Programm sperren
+  (SPAR, HOFER, Müller), und etwa 20 Märkte in Österreich plus Deutschland. Daraus
+  schließe ich, dass die Daten nicht nur aus dem Auslesen öffentlicher Seiten kommen.
+  Wie genau, steht dort nicht.
+- Es verkauft den Zugang als API (`preisrunter.at/api/`): kostenlos nur für bis zu
+  10 festgelegte Produkte, Research (nicht kommerziell) kostenlos auf Anfrage,
+  **Starter 49 €/Monat (10.000 Preisabfragen)**, **Business 349 €/Monat (100.000)**, Enterprise
+  auf Anfrage. Ein Credit je Produktpreis. Vollständiger Export nur auf Anfrage.
+
+## dm: was möglich ist
+
+- Die Sitemap (robots.txt erlaubt sie) listet **6.235 Produktseiten** und **376 Filialen**
+  mit Adresse. Die Preise stehen aber nicht im HTML, sie werden per Skript nachgeladen.
+  Ein Vollabzug braucht je Produkt einen Browser-Abruf, rund 3 Stunden: nur als
+  nächtlicher Job sinnvoll. Der erste Lauf hat nur die Startseite gelesen (61 Artikel).
+
 ## Offen
 
 - Seiten mit nachgeladenen Preisen (dm, BIPA, Alfies, Lidl, SPAR) per Browser prüfen.
