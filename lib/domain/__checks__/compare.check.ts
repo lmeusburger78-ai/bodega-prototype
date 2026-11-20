@@ -51,6 +51,13 @@ const deal = bestOffer({ query: 'Kaffee', qty: 1, amount: { value: 0.5, unit: 'k
 assert.equal(deal.total, 6.99)
 assert.match(deal.hint!, /2 Packungen kosten gleich viel/)
 
+// Billa style: 1 pack 3,99, from 2 packs 2,69 each – only counted when 2 are in the cart, else a hint
+const pf = o({ retailer: 'billa', brand: 'Wagner', pack: { value: 0.27, unit: 'kg' }, price: 3.99, deal: { kind: 'price-from', from: 2, price: 2.69 } })
+const one = bestOffer({ query: 'Pizza', qty: 1, amount: { value: 0.27, unit: 'kg' } }, [pf], me).best!
+assert.equal(one.total, 3.99); assert.match(one.hint!, /ab 2 Stk je €2,69: 2 Stück kosten €5,38 statt €7,98/)
+const two = bestOffer({ query: 'Pizza', qty: 2, amount: { value: 0.27, unit: 'kg' } }, [pf], me).best!
+assert.equal(two.total, 5.38); assert.equal(two.saved, 2.6)
+
 // loyalty only if member
 const lp = [o({ retailer: 'billa', brand: 'X', pack: { value: 1, unit: 'kg' }, price: 3, loyalty: { program: 'joe', price: 2.5 } })]
 assert.equal(bestOffer({ query: 'x', qty: 1 }, lp, me).best?.total, 3)

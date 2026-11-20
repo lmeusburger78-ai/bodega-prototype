@@ -1,0 +1,39 @@
+{
+  "date": "2026-11-20",
+  "perRetailer": {
+    "billa": {
+      "pages": 19,
+      "items": 2087,
+      "unread": 0
+    },
+    "penny": {
+      "pages": 17,
+      "items": 435,
+      "unread": 0
+    },
+    "lidl": {
+      "pages": 3,
+      "items": 12,
+      "unread": 0
+    },
+    "mpreis": {
+      "pages": 4,
+      "items": 147,
+      "unread": 0
+    },
+    "dm": {
+      "pages": 1,
+      "items": 61,
+      "unread": 0
+    }
+  },
+  "total": 1277,
+  "duplicatesDropped": 1465,
+  "flagged": [
+    {
+      "retailer": "dm",
+      "name": "Protein Cookie Soft Lebkuchen",
+      "why": "Grundpreis 0.03 passt nicht zu 1.45 für 0.05 kg (erwartet 29.00)"
+    }
+  ]
+}

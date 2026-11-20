@@ -49,6 +49,8 @@ export type Deal =
   | { kind: 'buy-pay'; buy: number; pay: number }
   /** percentage off every pack once at least `from` packs are bought */
   | { kind: 'pct-from'; from: number; pct: number }
+  /** from `from` packs on, every pack costs `price` ("ab 2 Packungen je 2,69 €") */
+  | { kind: 'price-from'; from: number; price: number }
 
 /** Where the availability claim comes from: the branch itself, the online shop, or nobody. */
 export type Availability = 'branch' | 'online' | 'unknown' | 'out'
@@ -134,10 +136,12 @@ export function dealTotal(price: number, packs: number, deal?: Deal): number {
     const rest = packs - sets * deal.buy
     return round((sets * deal.pay + rest) * price)
   }
+  if (deal.kind === 'price-from') return round((packs >= deal.from ? Math.min(deal.price, price) : price) * packs)
   return round(price * packs * (packs >= deal.from ? 1 - deal.pct / 100 : 1))
 }
 
 export function dealLabel(deal: Deal): string {
+  if (deal.kind === 'price-from') return `ab ${deal.from} Stk je ${euro(deal.price)}`
   return deal.kind === 'buy-pay'
     ? deal.buy === deal.pay + 1 && deal.pay === 1 ? '1+1 gratis' : `${deal.buy} zum Preis von ${deal.pay}`
     : `−${deal.pct} % ab ${deal.from} Stk`
@@ -178,9 +182,11 @@ export function priceOffer(line: ListLine, offer: ShelfOffer, shopper: Shopper):
     const nextTotal = dealTotal(unitShelf, next, offer.deal)
     if (offer.deal.kind === 'buy-pay' && nextTotal === total)
       hint = `${dealLabel(offer.deal)}: ${next} Packungen kosten gleich viel wie ${packs}.`
+    else if (offer.deal.kind === 'price-from' && packs < offer.deal.from)
+      hint = `${dealLabel(offer.deal)}: ${offer.deal.from} Stück kosten ${euro(dealTotal(unitShelf, offer.deal.from, offer.deal))} statt ${euro(round(unitShelf * offer.deal.from))}.`
     else if (offer.deal.kind === 'pct-from' && next >= offer.deal.from && packs < offer.deal.from)
       hint = `${dealLabel(offer.deal)}: mit ${next} Packungen zahlst du ${euro(nextTotal)} statt ${euro(total)}.`
-    else if (packs < (offer.deal.kind === 'buy-pay' ? offer.deal.buy : offer.deal.from))
+    else if (offer.deal.kind !== 'price-from' && packs < (offer.deal.kind === 'buy-pay' ? offer.deal.buy : offer.deal.from))
       hint = `Aktion ${dealLabel(offer.deal)} gilt erst ab ${offer.deal.kind === 'buy-pay' ? offer.deal.buy : offer.deal.from} Stück.`
   }
   if (offer.availability === 'online') notes.push('Verfügbarkeit laut Online-Shop')

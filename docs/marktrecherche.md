@@ -174,6 +174,32 @@ Wird täglich vollständig dokumentiert, ist aber **vorerst nur intern**
 (`HISTORY_VISIBLE_TO_USERS = false`): für Plausibilität, Erklärung von
 Änderungen und den Normalpreis bei Lidl/PENNY. Ob Nutzer ihn sehen, ist offen.
 
+## Datenstand 20.11.2026 (erster Lauf)
+
+`data/prices/2026-11-20.jsonl`: **1.277 Artikel** aus ausgewählten Kategorien
+(kein Vollabzug). Bei jeder Zeile stehen Quelle (Seite) und Tag.
+
+| Kette | Artikel | Besonderes |
+|---|---|---|
+| BILLA | 748 | 220 Mengenaktionen ("ab 2 Packungen 2,69 € statt 3,99 €"), aus `/aktionen` und 4 Kategorien |
+| PENNY | 324 | alle mit Aktionszeitraum, 185 erst ab nächster Woche gültig, 86 mit Streichpreis, 22 mit Mindestmenge |
+| MPREIS | 132 | 30 mit Streichpreis, 10 mit Mindestmenge ("Bei 2 Stk. je") |
+| dm | 61 | nur Startseite (überwiegend Technik und Geschenksets) |
+| Lidl | 12 | 3 Kategorien, alles Aktionsware mit Zeitraum, 6 erst später gültig |
+
+**Gegenprobe:** Jede Zeile wird gegen sich selbst geprüft (Grundpreis muss zu
+Preis ÷ Packung passen, Streichpreis über Aktionspreis, Aktionsende nach Beginn).
+Beim ersten Lauf waren 44 Zeilen auffällig. Ursachen waren Lesefehler (lose Ware
+"je 100 g", Mehrfachpackungen "4x 185 g", "1 000 g") und Eigenheiten der Seiten
+(MPREIS beschriftet kg-Packungen mit "/Stk"). Nach den Korrekturen bleibt **ein**
+Fall übrig, und der ist ein Fehler im dm-Shop: Der Protein-Cookie (50 g) steht dort
+mit Grundpreis "50 kg (0,03 € je 1 kg)".
+
+**Nicht im Datenstand:** SPAR, HOFER, Müller, Gurkerl (gesperrt), BIPA und Alfies
+(noch nicht lesbar), und von den gelesenen Ketten nur der Teil der Kategorien aus
+`tools/ingest.mts`. Artikelnummern zeigt keine Seite im Text, `sku` ist deshalb aus
+Marke, Name und Packung gebildet.
+
 ## Offen
 
 - Seiten mit nachgeladenen Preisen (dm, BIPA, Alfies, Lidl, SPAR) per Browser prüfen.

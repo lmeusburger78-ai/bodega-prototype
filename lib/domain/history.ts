@@ -26,7 +26,12 @@ export type Observation = {
   wasPrice?: number
   /** the retailer's own label for the promotion, verbatim ("-25% auf alle Ja! Natürlich Produkte") */
   promoText?: string
+  promoFrom?: string
   promoUntil?: string
+  /** "ab 24 Flaschen": promo price only from this many packs */
+  minQty?: number
+  /** the retailer's own price per kg / l / piece, as shown */
+  unitPrice?: { price: number; per: Amount }
   deal?: Deal
   loyaltyPrice?: number
   seals: Seal[]

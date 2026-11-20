@@ -25,6 +25,11 @@ Rechnung teilen und ein Preisvergleich über die Märkte in der Nähe.
 - `data/recipes.json` + `lib/domain/recipes.ts` — 331 Rezepte, 357 Zutaten im
   Katalog, 14 EU-Allergene, 20 Küchen (aus blackbox-app, Branch round-2);
   Zutatensuche, Allergenfilter, Rezept → Einkaufsliste mit Portionen.
+- `lib/ingest/parse.ts` + `tools/ingest.mts` — liest die Produktlisten von BILLA,
+  PENNY, Lidl, MPREIS und dm und schreibt `data/prices/<Tag>.jsonl` (ein Artikel
+  pro Zeile) samt `<Tag>.report.json` (was gelesen wurde, was auffällt).
+  Lauf: `NODE_USE_ENV_PROXY=1 NODE_PATH=$(npm root -g) node --experimental-strip-types tools/ingest.mts`
+  (braucht playwright).
 - `design/layouts.html` — drei Layout-Entwürfe zum Öffnen im Browser.
 
 ## Geplant
