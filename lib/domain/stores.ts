@@ -24,6 +24,10 @@ export type Branch = {
   closedOn?: string[]
   /** last time address and hours were checked against the chain's branch finder */
   checkedAt: string
+  /** Bundesland; prices should not differ inside one region for the same branch type */
+  region?: string
+  /** the chain's own branch type (Supermarkt, Hypermarkt, Markt …), when the chain publishes one */
+  type?: string
 }
 
 export const address = (b: Branch) => `${b.street}, ${b.zip} ${b.city}`

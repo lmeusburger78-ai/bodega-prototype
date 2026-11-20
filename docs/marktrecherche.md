@@ -248,3 +248,27 @@ Marke, Name und Packung gebildet.
 - https://en.wikipedia.org/wiki/List_of_supermarket_chains_in_Austria
 - https://orf.at/stories/3417575/
 - https://www.5min.at/oesterreich/5202601112304/muessen-supermaerkte-ihre-preise-bald-taeglich-melden/
+
+## Filialen ohne jede Filiale komplett zu lesen
+
+Umsetzung in `lib/ingest/regional.ts` (Prüfungen mit Beispieldaten):
+
+- **Gruppe** = Kette · Filialtyp · Bundesland. Innerhalb einer Gruppe gilt dasselbe Sortiment zum
+  selben Preis, zwischen Bundesländern darf es Unterschiede geben (jedes hat seine eigene Basis).
+- **Monatlich** wird je Gruppe eine Referenzfiliale vollständig gelesen (wechselt monatlich).
+- **Täglich** bekommt jede andere Filiale in etwa alle 14 Tage eine Stichprobe und wird mit der Basis
+  verglichen: gleicher Artikel, anderer Preis ist die Abweichung, die es nicht geben sollte.
+  Mehr als 2 % abweichende Preise: „abweichend“, am nächsten Tag folgt ein Volllesen.
+  Unter 20 vergleichbaren Artikeln: „zu wenig vergleichbar“, es wird eine größere Stichprobe gelesen.
+- **Ausreißer** innerhalb einer Gruppe: gilt der Preis der Mehrheit der Filialen, die übrigen werden
+  gemeldet (späte Preisänderung, falsch ausgezeichnet oder Lesefehler).
+
+**Grenze:** Das setzt voraus, dass es Preise *je Filiale* gibt. Derzeit sind die Daten Online-Shop-
+Preise, also eine Liste pro Kette. Nur MPREIS und dm lassen einen Markt wählen; ob sich dort die
+Preise je Markt unterscheiden, ist nicht geprüft. Der Filialtyp (Hyper-, Super-, Kleinmarkt) steht
+bei dm nicht in den Daten, die Gruppe ist daher dort Bundesland allein.
+
+## dm-Filialen
+
+`data/stores/dm.json`: Adresse, Bundesland, Koordinaten, Öffnungszeiten, Schließtage. Gelesen wird,
+was die Filialseite selbst beim Laden abruft (`tools/stores-dm.mts`), 376 Seiten aus dm's Sitemap.
