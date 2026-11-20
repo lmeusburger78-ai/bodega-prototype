@@ -28,6 +28,14 @@ assert.equal(priceOn('a', 'Ja! Natürlich', 2, 'billa', 'b1', '2026-11-20', '202
 assert.equal(priceOn('a', 'Ja! Natürlich', 2, 'billa', 'b1', '2026-11-20', '2026-11-19', [jn], ['jö']).price, 1.5)
 assert.deepEqual(promoProblems({ ...promo, price: 2 }, 1.49), ['Aktionspreis nicht unter Normalpreis'])
 
+// Penny: "0,69 ab 24 Flaschen" – with fewer in the cart the regular price stays
+const beer: Promotion = { id: 'p3', chain: 'penny', skus: ['beer'], price: 0.69, validFrom: '2026-11-19', validTo: '2026-11-25',
+  restrictions: [{ kind: 'min-qty', qty: 24 }], finePrint: 'ab 24 Flaschen', source: { kind: 'website', url: 'x' }, reviewed: true }
+const few = priceOn('beer', 'Ottakringer', 0.89, 'penny', 'b1', '2026-11-20', '2026-11-19', [beer], [], 6)
+assert.equal(few.price, 0.89); assert.ok(few.conditions.includes('Aktionspreis gilt erst ab 24 Stück'))
+const many = priceOn('beer', 'Ottakringer', 0.89, 'penny', 'b1', '2026-11-20', '2026-11-19', [beer], [], 24)
+assert.equal(many.price, 0.69); assert.ok(many.conditions.includes('gilt ab 24 Stück'))
+
 // opening hours
 const b: Branch = { id: 'b1', chain: 'billa', name: 'BILLA Testgasse', street: 'Testgasse 1', zip: '1010', city: 'Wien', lat: 48.2, lon: 16.37,
   hours: { 6: [{ open: '07:15', close: '18:00' }] }, closedOn: ['2026-12-08'], checkedAt: '2026-11-01' }

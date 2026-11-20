@@ -9,7 +9,7 @@ nichts davon durch einen eigenen Abruf bestätigt. Der Code führt das als
 
 | Kette | Gruppe | Online-Preise | Grundpreis | Kundenprogramm | Beleg |
 |---|---|---|---|---|---|
-| HOFER | Diskonter | Sortiment mit Preisen | ja | – | Suchtreffer hofer.at/produkte |
+| HOFER | Diskonter | **nicht bestätigt** (Seite gesperrt) | ? | – | Suchtreffer, Abruf 403 |
 | Lidl | Diskonter | nur Aktionen / Flugblatt | ? | Lidl Plus | lidl.at, Vergleichsportale |
 | PENNY | Diskonter | nur Aktionen | ? | jö | nur indirekt (Vergleichsportale) |
 | BILLA / BILLA PLUS | Supermarkt | Online-Shop, > 10.000 Artikel, Filialpreise | ? | jö, Rabattmarkerl | Presse (REWE, 2025) |
@@ -176,7 +176,8 @@ Wird täglich vollständig dokumentiert, ist aber **vorerst nur intern**
 
 ## Offen
 
-- Netzwerkfreigabe für die Websites der Ketten, um die Tabelle oben zu bestätigen.
+- Seiten mit nachgeladenen Preisen (dm, BIPA, Alfies, Lidl, SPAR) per Browser prüfen.
+- Datenzugang bei SPAR, HOFER, Müller, Gurkerl anfragen.
 - Welche Siegel die Ketten in ihren Produktdaten führen.
 - Ob SPARs „Verfügbarkeit je Markt“ öffentlich abrufbar ist.
 

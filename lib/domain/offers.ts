@@ -13,6 +13,8 @@ export type Restriction =
   | { kind: 'loyalty'; program: string }
   /** "max. 3 Stück pro Einkauf" */
   | { kind: 'max-qty'; qty: number }
+  /** "ab 24 Flaschen": the promo price only applies from this many packs */
+  | { kind: 'min-qty'; qty: number }
   /** "nur in Filialen mit Feinkosttheke", "nicht in Bahnhofsfilialen" */
   | { kind: 'branches'; include?: string[]; exclude?: string[]; text: string }
   /** "nur Freitag und Samstag" */
@@ -76,6 +78,8 @@ export type PriceOnDay = {
 export function priceOn(
   sku: string, brand: string, regular: number, chain: string, branchId: string,
   day: string, today: string, promos: Promotion[], programs: string[],
+  /** packs in the cart; matters for "ab n Stück" promotions */
+  qty = 1,
 ): PriceOnDay {
   const weekday = new Date(day + 'T12:00:00').getDay()
   const conditions: string[] = []
@@ -88,11 +92,18 @@ export function priceOn(
       if (r.kind === 'loyalty') return programs.includes(r.program)
       return true
     }))
-  const priced = valid.map(p => ({ p, price: p.price ?? (p.pct != null ? round(regular * (1 - p.pct / 100)) : regular) }))
+  const unmet = valid.find(p => p.restrictions.some(r => r.kind === 'min-qty' && qty < r.qty))
+  const usable = valid.filter(p => p.restrictions.every(r => r.kind !== 'min-qty' || qty >= r.qty))
+  const priced = usable.map(p => ({ p, price: p.price ?? (p.pct != null ? round(regular * (1 - p.pct / 100)) : regular) }))
     .sort((a, b) => a.price - b.price)
   const best = priced[0]
+  if (!best && unmet) {
+    const r = unmet.restrictions.find(x => x.kind === 'min-qty') as { qty: number }
+    conditions.push(`Aktionspreis gilt erst ab ${r.qty} Stück`)
+  }
   if (best) for (const r of best.p.restrictions) {
     if (r.kind === 'max-qty') conditions.push(`max. ${r.qty} Stück pro Einkauf`)
+    if (r.kind === 'min-qty') conditions.push(`gilt ab ${r.qty} Stück`)
     if (r.kind === 'while-stocks-last') conditions.push('solange der Vorrat reicht')
     if (r.kind === 'excludes' || r.kind === 'other' || r.kind === 'branches') conditions.push(r.text)
     if (r.kind === 'loyalty') conditions.push(`nur mit ${r.program}`)
