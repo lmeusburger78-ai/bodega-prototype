@@ -13,9 +13,15 @@ Rechnung teilen und ein Preisvergleich über die Märkte in der Nähe.
   Packungsgröße, wenn eine Menge genannt ist, sonst günstigster Grundpreis
   (kg, l, Stk); Marke, Gütesiegel, Mengenaktionen (1+1, −x % ab n Stk) mit
   Hinweis, Kundenkarten-Preise nur mit Mitgliedschaft, Rabattmarkerl nur nach
-  Rückfrage. Prüfungen: `node --experimental-strip-types lib/domain/__checks__/compare.check.ts`
+  Rückfrage. Prüfungen: `for f in lib/domain/__checks__/*.ts; do node --experimental-strip-types $f; done`
 - `lib/domain/directory.ts` — Verzeichnis der Ketten mit Online-Preisen
   (Recherche in `docs/marktrecherche.md`, noch nicht per Abruf bestätigt).
+- `lib/domain/history.ts` — täglicher Preisverlauf (intern), Erklärung von
+  Preisänderungen, Monatsabgleich von Sortiment und Filialen.
+- `lib/domain/offers.ts` — Aktionen mit Gültigkeit und Kleingedrucktem; Preise
+  für jeden Tag der laufenden Woche.
+- `lib/domain/stores.ts` — Filialen mit Adresse, Öffnungszeiten, Gehzeit, Route.
+- `lib/domain/trip.ts` — Abhaken im Markt, Normalpreis gegen bezahlt, Ersparnis.
 - `design/layouts.html` — drei Layout-Entwürfe zum Öffnen im Browser.
 
 ## Geplant

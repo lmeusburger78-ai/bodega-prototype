@@ -145,4 +145,21 @@ export function suspicious(a: Observation, b: Observation): string | null {
   return null
 }
 
+/**
+ * Chains that publish only promotions (Lidl, PENNY) show the regular price as the
+ * crossed-out price while an article is on offer. Remember the last one seen, so
+ * the article can still be compared later, marked "Normalpreis zuletzt gesehen am …".
+ */
+export function lastRegularPrice(history: Observation[], retailer: string, sku: string): { price: number; seenOn: string } | null {
+  const seen = history
+    .filter(o => o.retailer === retailer && o.sku === sku)
+    .map(o => ({ price: o.wasPrice ?? (o.promoText ? undefined : o.price), seenOn: o.date }))
+    .filter((x): x is { price: number; seenOn: string } => x.price != null)
+    .sort((a, b) => b.seenOn.localeCompare(a.seenOn))
+  return seen[0] ?? null
+}
+
+/** Price history is internal for now: analysis and plausibility, not shown to shoppers. */
+export const HISTORY_VISIBLE_TO_USERS = false
+
 const key = (o: Observation) => `${o.retailer}|${o.sku}`

@@ -118,6 +118,62 @@ veröffentlichen kein Vollsortiment mit Preisen, deshalb zeigt auch
 heisse-preise.io dort nur Aktionsangebote. Die Einschränkung liegt also bei den
 Ketten, nicht bei der Technik.
 
+## Lidl und PENNY: reguläre Preise
+
+- **Lidl**: keine Preisliste des Dauersortiments gefunden, weder auf lidl.at noch
+  in der Beschreibung von Lidl Plus. Online stehen Flugblatt und Filialangebote;
+  Lidl-Plus-Rabatte wechseln Montag und Donnerstag.
+- **PENNY**: neben der Angebotsseite gibt es Kategorieseiten mit Preisen und
+  Grundpreis (z. B. Getränke). Ob dort auch Artikel ohne Aktion stehen, muss ein
+  Abruf der Seite zeigen.
+- **Ersatz**: In der Aktion zeigt die Kette den Normalpreis als Streichpreis. Den
+  speichern wir (`lastRegularPrice`) und vergleichen damit weiter, gekennzeichnet
+  als „Normalpreis zuletzt gesehen am …“. Ältere Werte als 60 Tage verfallen.
+
+## Filialen
+
+Je Filiale: genaue Adresse, Koordinaten, Öffnungszeiten, Feiertage
+(`lib/domain/stores.ts`). Quelle ist die Filialsuche der Kette, geprüft im
+Monatsabgleich. Daraus:
+
+- „geöffnet bis 20:00“ / „öffnet um 7:15“ / „heute geschlossen“
+- Gehzeit (vorerst geschätzt, „ca.“), Route als Link zu Google Maps mit allen
+  Stopps; später echte Gehzeit über einen Routing-Dienst (Google Routes API oder
+  OpenStreetMap-basiert, Kosten offen)
+- Warnung, wenn ein Markt der Route bei Ankunft schon zu hat
+
+## Einkaufen: Abhaken und Ersparnis
+
+Im Markt hakt man ab, was im Korb liegt; offene Artikel stehen je Markt oben
+(`lib/domain/trip.ts`). Jede Zeile führt Normalpreis und bezahlten Preis. Am
+Ende: Summe zum Normalpreis, bezahlt, gespart, und wofür (Aktion, 1+1,
+Rabattmarkerl, Kundenkarte).
+
+## Preise für einen anderen Tag dieser Woche
+
+Wählbar ist heute bis Sonntag (`selectableDays`). Für einen späteren Tag gilt:
+der heutige Normalpreis, plus alle Aktionen, die für diesen Tag angekündigt sind
+(Flugblatt, Website, App). Angezeigt als Prognose („voraussichtlich“).
+
+**Kleingedrucktes** wird je Aktion erfasst (`lib/domain/offers.ts`):
+nur bestimmte Wochentage, nur mit Kundenkarte, max. Stückzahl, nicht in
+bestimmten Filialen, ausgenommene Waren, solange der Vorrat reicht. Die App
+rechnet die Aktion nur ein, wenn die Bedingungen erfüllt sind, und zeigt sie
+immer dazu an.
+
+**Flugblätter** sind meist PDF oder Bild. Sie werden beim Erscheinen gelesen
+(Text, notfalls Texterkennung) und jeder Aktion zugeordnet, mit Seite als
+Quelle. Bis ein Mensch Preis, Datum und Kleingedrucktes gegen das Flugblatt
+geprüft hat, steht „noch nicht geprüft“ dabei. Automatische Prüfungen
+(`promoProblems`): Ende vor Beginn, Aktionspreis nicht unter Normalpreis,
+unplausibler Rabatt, fehlendes Kleingedrucktes, keine Artikel zugeordnet.
+
+## Preisverlauf
+
+Wird täglich vollständig dokumentiert, ist aber **vorerst nur intern**
+(`HISTORY_VISIBLE_TO_USERS = false`): für Plausibilität, Erklärung von
+Änderungen und den Normalpreis bei Lidl/PENNY. Ob Nutzer ihn sehen, ist offen.
+
 ## Offen
 
 - Netzwerkfreigabe für die Websites der Ketten, um die Tabelle oben zu bestätigen.
@@ -125,6 +181,10 @@ Ketten, nicht bei der Technik.
 - Ob SPARs „Verfügbarkeit je Markt“ öffentlich abrufbar ist.
 
 ## Quellen
+
+- https://www.lidl.at/c/lidl-plus/s10012352
+- https://www.penny.at/angebote
+- https://www.penny.at/kategorie/getraenke-13024
 
 - https://www.hofer.at/produkte
 - https://shop.hofer.at/alle-produkte

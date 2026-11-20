@@ -96,6 +96,9 @@ export type Priced = {
   packs: number
   /** what is paid at the till, deals and eligible loyalty prices applied */
   total: number
+  /** the same packs at the regular price (wasPrice, else shelf price), no deals */
+  regularTotal: number
+  saved: number
   /** price per kg / l / piece, for comparison and display */
   unitPrice: number
   unit: Unit
@@ -181,7 +184,8 @@ export function priceOffer(line: ListLine, offer: ShelfOffer, shopper: Shopper):
   if (offer.availability === 'online') notes.push('Verfügbarkeit laut Online-Shop')
 
   const contents = packs * offer.pack.value
-  return { offer, packs, total, unitPrice: round(total / contents), unit: offer.pack.unit, notes, hint }
+  const regularTotal = round((offer.wasPrice ?? offer.price) * packs)
+  return { offer, packs, total, regularTotal, saved: round(regularTotal - total), unitPrice: round(total / contents), unit: offer.pack.unit, notes, hint }
 }
 
 /**

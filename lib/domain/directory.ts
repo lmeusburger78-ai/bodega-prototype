@@ -42,9 +42,9 @@ export const CHAINS: Chain[] = [
   { id: 'hofer', name: 'HOFER', group: 'discounter', coverage: 'full', priceUrl: 'https://www.hofer.at/produkte', showsUnitPrice: true, verified: false,
     note: 'Sortimentsseite mit Preisen und Grundpreis laut Suchtreffer; Online-Shop shop.hofer.at führt v. a. Non-Food.' },
   { id: 'lidl', name: 'Lidl', group: 'discounter', coverage: 'offers-only', priceUrl: 'https://www.lidl.at/c/flugblatt/s10012330', loyalty: 'Lidl Plus', verified: false,
-    note: 'Website zeigt Filialangebote und Flugblatt; reguläre Preise des Dauersortiments nicht gefunden. App-Preise (Lidl Plus) regional verschieden.' },
+    note: 'Website zeigt Filialangebote und Flugblatt; keine Preisliste des Dauersortiments gefunden (auch nicht in Lidl Plus beschrieben). App-Preise (Lidl Plus) regional verschieden.' },
   { id: 'penny', name: 'PENNY', group: 'discounter', coverage: 'offers-only', loyalty: 'jö Bonus Club', verified: false,
-    note: 'Laut Vergleichsportalen nur Aktionsangebote online, kein Vollsortiment. Nicht direkt geprüft.' },
+    note: 'Angebotsseite mit Gültigkeit und Grundpreis; Kategorieseiten (z. B. penny.at/kategorie/getraenke-13024) zeigen Preise, ob auch Dauerpreise: prüfen.' },
 
   // Supermärkte
   { id: 'billa', name: 'BILLA / BILLA PLUS', group: 'supermarket', coverage: 'full', priceUrl: 'https://shop.billa.at/', loyalty: 'jö Bonus Club', stickers: true, verified: false,
