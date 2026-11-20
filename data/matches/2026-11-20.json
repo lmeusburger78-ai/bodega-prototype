@@ -1,0 +1,1214 @@
+{
+ "date": "2026-11-20",
+ "articles": 1277,
+ "identicalGroups": [
+  [
+   {
+    "retailer": "billa",
+    "sku": "billa:wiener-zucker-feinkristall-zucker:1kg",
+    "brand": "",
+    "name": "Wiener Zucker Feinkristall-Zucker",
+    "pack": {
+     "value": 1,
+     "unit": "kg"
+    },
+    "price": 1.59
+   },
+   {
+    "retailer": "penny",
+    "sku": "penny:wiener-zucker-feinkristall-zucker:1kg",
+    "brand": "Wiener Zucker",
+    "name": "Feinkristall Zucker",
+    "pack": {
+     "value": 1,
+     "unit": "kg"
+    },
+    "price": 0.99
+   }
+  ],
+  [
+   {
+    "retailer": "billa",
+    "sku": "billa:ferrero-milchschnitte:0.14kg",
+    "brand": "",
+    "name": "Ferrero Milchschnitte",
+    "pack": {
+     "value": 0.14,
+     "unit": "kg"
+    },
+    "price": 2.19
+   },
+   {
+    "retailer": "mpreis",
+    "sku": "mpreis:ferrero-milchschnitte-5er-packung:0.14kg",
+    "brand": "Ferrero",
+    "name": "Milchschnitte 5er-Packung",
+    "pack": {
+     "value": 0.14,
+     "unit": "kg"
+    },
+    "price": 1.64
+   }
+  ],
+  [
+   {
+    "retailer": "billa",
+    "sku": "billa:lattella-maracuja:0.5l",
+    "brand": "",
+    "name": "Lattella Maracuja",
+    "pack": {
+     "value": 0.5,
+     "unit": "l"
+    },
+    "price": 1.39
+   },
+   {
+    "retailer": "mpreis",
+    "sku": "mpreis:lattella-maracuja-0-5-liter:0.5l",
+    "brand": "Lattella",
+    "name": "Maracuja 0,5 Liter",
+    "pack": {
+     "value": 0.5,
+     "unit": "l"
+    },
+    "price": 0.67
+   }
+  ],
+  [
+   {
+    "retailer": "billa",
+    "sku": "billa:rapso-reines-rapsöl:0.75l",
+    "brand": "",
+    "name": "Rapso Reines Rapsöl",
+    "pack": {
+     "value": 0.75,
+     "unit": "l"
+    },
+    "price": 3.99
+   },
+   {
+    "retailer": "penny",
+    "sku": "penny:rapso-reines-rapsöl:0.75l",
+    "brand": "Rapso",
+    "name": "Reines Rapsöl",
+    "pack": {
+     "value": 0.75,
+     "unit": "l"
+    },
+    "price": 3.99
+   }
+  ],
+  [
+   {
+    "retailer": "billa",
+    "sku": "billa:soletti-salzstangerl:0.23kg",
+    "brand": "",
+    "name": "Soletti Salzstangerl",
+    "pack": {
+     "value": 0.23,
+     "unit": "kg"
+    },
+    "price": 2.79
+   },
+   {
+    "retailer": "penny",
+    "sku": "penny:soletti-salzstangerl:0.23kg",
+    "brand": "Soletti",
+    "name": "Salzstangerl",
+    "pack": {
+     "value": 0.23,
+     "unit": "kg"
+    },
+    "price": 1.39
+   }
+  ],
+  [
+   {
+    "retailer": "billa",
+    "sku": "billa:wunderlinge-erdäpfel:2.5kg",
+    "brand": "",
+    "name": "Wunderlinge Erdäpfel",
+    "pack": {
+     "value": 2.5,
+     "unit": "kg"
+    },
+    "price": 2.07
+   },
+   {
+    "retailer": "penny",
+    "sku": "penny:wunderlinge-erdäpfel:2.5kg",
+    "brand": "WUNDERLINGE",
+    "name": "Erdäpfel",
+    "pack": {
+     "value": 2.5,
+     "unit": "kg"
+    },
+    "price": 2.07
+   }
+  ],
+  [
+   {
+    "retailer": "billa",
+    "sku": "billa:ölz-butterzopf-mit-honig:0.5kg",
+    "brand": "",
+    "name": "Ölz Butterzopf mit Honig",
+    "pack": {
+     "value": 0.5,
+     "unit": "kg"
+    },
+    "price": 4.39
+   },
+   {
+    "retailer": "penny",
+    "sku": "penny:ölz-butterzopf-mit-honig:0.5kg",
+    "brand": "Ölz",
+    "name": "Butterzopf mit Honig",
+    "pack": {
+     "value": 0.5,
+     "unit": "kg"
+    },
+    "price": 2.89
+   }
+  ],
+  [
+   {
+    "retailer": "billa",
+    "sku": "billa:ölz-rosinenzopf:0.6kg",
+    "brand": "",
+    "name": "Ölz Rosinenzopf",
+    "pack": {
+     "value": 0.6,
+     "unit": "kg"
+    },
+    "price": 4.49
+   },
+   {
+    "retailer": "penny",
+    "sku": "penny:ölz-rosinenzopf:0.6kg",
+    "brand": "Ölz",
+    "name": "Rosinenzopf",
+    "pack": {
+     "value": 0.6,
+     "unit": "kg"
+    },
+    "price": 2.89
+   }
+  ],
+  [
+   {
+    "retailer": "penny",
+    "sku": "penny:red-bull-energy-drink:0.25l",
+    "brand": "Red Bull",
+    "name": "Energy Drink",
+    "pack": {
+     "value": 0.25,
+     "unit": "l"
+    },
+    "price": 0.89
+   },
+   {
+    "retailer": "mpreis",
+    "sku": "mpreis:red-bull-energy-drink:0.25l",
+    "brand": "Red Bull",
+    "name": "Energy Drink",
+    "pack": {
+     "value": 0.25,
+     "unit": "l"
+    },
+    "price": 0.99
+   }
+  ]
+ ],
+ "review": [
+  {
+   "score": 0.75,
+   "why": "Marke \"knorr\", Packung gleich, Name 75 % ähnlich",
+   "a": {
+    "retailer": "billa",
+    "sku": "billa:knorr-bitte-zu-tisch-fleischklößchensuppe:0.058kg",
+    "brand": "",
+    "name": "Knorr Bitte zu Tisch Fleischklößchensuppe",
+    "pack": {
+     "value": 0.058,
+     "unit": "kg"
+    },
+    "price": 1.19
+   },
+   "b": {
+    "retailer": "penny",
+    "sku": "penny:knorr-bitte-zu-tisch-suppen:0.058kg",
+    "brand": "Knorr",
+    "name": "Bitte zu Tisch! Suppen",
+    "pack": {
+     "value": 0.058,
+     "unit": "kg"
+    },
+    "price": 0.66
+   }
+  },
+  {
+   "score": 0.75,
+   "why": "Marke \"knorr\", Packung gleich, Name 75 % ähnlich",
+   "a": {
+    "retailer": "billa",
+    "sku": "billa:knorr-bitte-zu-tisch-nudelsuppe:0.101kg",
+    "brand": "",
+    "name": "Knorr Bitte zu Tisch Nudelsuppe",
+    "pack": {
+     "value": 0.101,
+     "unit": "kg"
+    },
+    "price": 1.19
+   },
+   "b": {
+    "retailer": "penny",
+    "sku": "penny:knorr-bitte-zu-tisch-suppen:0.101kg",
+    "brand": "Knorr",
+    "name": "Bitte zu Tisch! Suppen",
+    "pack": {
+     "value": 0.101,
+     "unit": "kg"
+    },
+    "price": 0.66
+   }
+  },
+  {
+   "score": 0.67,
+   "why": "Marke \"knorr\", Packung gleich, Name 67 % ähnlich",
+   "a": {
+    "retailer": "billa",
+    "sku": "billa:knorr-bitte-zu-tisch-abc-suppe:0.109kg",
+    "brand": "",
+    "name": "Knorr Bitte zu Tisch ABC Suppe",
+    "pack": {
+     "value": 0.109,
+     "unit": "kg"
+    },
+    "price": 1.19
+   },
+   "b": {
+    "retailer": "penny",
+    "sku": "penny:knorr-bitte-zu-tisch-suppen:0.109kg",
+    "brand": "Knorr",
+    "name": "Bitte zu Tisch! Suppen",
+    "pack": {
+     "value": 0.109,
+     "unit": "kg"
+    },
+    "price": 0.66
+   }
+  },
+  {
+   "score": 0.8,
+   "why": "Marke \"knorr\", Packung gleich, Name 80 % ähnlich",
+   "a": {
+    "retailer": "billa",
+    "sku": "billa:knorr-asia-noodles-huhn:0.07kg",
+    "brand": "",
+    "name": "Knorr Asia Noodles Huhn",
+    "pack": {
+     "value": 0.07,
+     "unit": "kg"
+    },
+    "price": 1.39
+   },
+   "b": {
+    "retailer": "penny",
+    "sku": "penny:knorr-asia-noodles:0.07kg",
+    "brand": "Knorr",
+    "name": "Asia Noodles",
+    "pack": {
+     "value": 0.07,
+     "unit": "kg"
+    },
+    "price": 0.93
+   }
+  },
+  {
+   "score": 0.67,
+   "why": "Marke \"mautner markhof\", Packung gleich, Name 67 % ähnlich",
+   "a": {
+    "retailer": "billa",
+    "sku": "billa:mautner-markhof-0-holunderblüten-sirup:0.7l",
+    "brand": "",
+    "name": "Mautner Markhof 0% Holunderblüten Sirup",
+    "pack": {
+     "value": 0.7,
+     "unit": "l"
+    },
+    "price": 3.99
+   },
+   "b": {
+    "retailer": "penny",
+    "sku": "penny:mautner-markhof-sirup:0.7l",
+    "brand": "Mautner Markhof",
+    "name": "Sirup",
+    "pack": {
+     "value": 0.7,
+     "unit": "l"
+    },
+    "price": 2.66
+   }
+  },
+  {
+   "score": 0.67,
+   "why": "Marke \"mautner markhof\", Packung gleich, Name 67 % ähnlich",
+   "a": {
+    "retailer": "billa",
+    "sku": "billa:mautner-markhof-0-himbeer-sirup:0.7l",
+    "brand": "",
+    "name": "Mautner Markhof 0% Himbeer Sirup",
+    "pack": {
+     "value": 0.7,
+     "unit": "l"
+    },
+    "price": 3.99
+   },
+   "b": {
+    "retailer": "penny",
+    "sku": "penny:mautner-markhof-sirup:0.7l",
+    "brand": "Mautner Markhof",
+    "name": "Sirup",
+    "pack": {
+     "value": 0.7,
+     "unit": "l"
+    },
+    "price": 2.66
+   }
+  },
+  {
+   "score": 0.67,
+   "why": "Marke \"soletti\", Packung gleich, Name 67 % ähnlich",
+   "a": {
+    "retailer": "billa",
+    "sku": "billa:soletti-sesam-salzstangerl:0.23kg",
+    "brand": "",
+    "name": "Soletti Sesam-Salzstangerl",
+    "pack": {
+     "value": 0.23,
+     "unit": "kg"
+    },
+    "price": 2.79
+   },
+   "b": {
+    "retailer": "penny",
+    "sku": "penny:soletti-salzstangerl:0.23kg",
+    "brand": "Soletti",
+    "name": "Salzstangerl",
+    "pack": {
+     "value": 0.23,
+     "unit": "kg"
+    },
+    "price": 1.39
+   }
+  },
+  {
+   "score": 0.67,
+   "why": "Marke \"wunderlinge\", Packung gleich, Name 67 % ähnlich",
+   "a": {
+    "retailer": "billa",
+    "sku": "billa:wunderlinge-äpfel:2kg",
+    "brand": "",
+    "name": "Wunderlinge Äpfel",
+    "pack": {
+     "value": 2,
+     "unit": "kg"
+    },
+    "price": 2.66
+   },
+   "b": {
+    "retailer": "penny",
+    "sku": "penny:wunderlinge-saftige-äpfel:2kg",
+    "brand": "WUNDERLINGE",
+    "name": "Saftige Äpfel",
+    "pack": {
+     "value": 2,
+     "unit": "kg"
+    },
+    "price": 2.19
+   }
+  }
+ ],
+ "comparable": [
+  {
+   "score": 0.75,
+   "why": "ähnlicher Name (75 %), Packung 0.101 / 0.109 kg",
+   "a": {
+    "retailer": "billa",
+    "sku": "billa:knorr-bitte-zu-tisch-nudelsuppe:0.101kg",
+    "brand": "",
+    "name": "Knorr Bitte zu Tisch Nudelsuppe",
+    "pack": {
+     "value": 0.101,
+     "unit": "kg"
+    },
+    "price": 1.19
+   },
+   "b": {
+    "retailer": "penny",
+    "sku": "penny:knorr-bitte-zu-tisch-suppen:0.109kg",
+    "brand": "Knorr",
+    "name": "Bitte zu Tisch! Suppen",
+    "pack": {
+     "value": 0.109,
+     "unit": "kg"
+    },
+    "price": 0.66
+   }
+  },
+  {
+   "score": 0.75,
+   "why": "ähnlicher Name (75 %), Packung 0.092 / 0.101 kg",
+   "a": {
+    "retailer": "billa",
+    "sku": "billa:knorr-bitte-zu-tisch-hühnersuppe:0.092kg",
+    "brand": "",
+    "name": "Knorr Bitte zu Tisch Hühnersuppe",
+    "pack": {
+     "value": 0.092,
+     "unit": "kg"
+    },
+    "price": 1.19
+   },
+   "b": {
+    "retailer": "penny",
+    "sku": "penny:knorr-bitte-zu-tisch-suppen:0.101kg",
+    "brand": "Knorr",
+    "name": "Bitte zu Tisch! Suppen",
+    "pack": {
+     "value": 0.101,
+     "unit": "kg"
+    },
+    "price": 0.66
+   }
+  },
+  {
+   "score": 0.75,
+   "why": "ähnlicher Name (75 %), Packung 0.059 / 0.058 kg",
+   "a": {
+    "retailer": "billa",
+    "sku": "billa:knorr-bitte-zu-tisch-eiermuschelsuppe:0.059kg",
+    "brand": "",
+    "name": "Knorr Bitte zu Tisch Eiermuschelsuppe",
+    "pack": {
+     "value": 0.059,
+     "unit": "kg"
+    },
+    "price": 1.19
+   },
+   "b": {
+    "retailer": "penny",
+    "sku": "penny:knorr-bitte-zu-tisch-suppen:0.058kg",
+    "brand": "Knorr",
+    "name": "Bitte zu Tisch! Suppen",
+    "pack": {
+     "value": 0.058,
+     "unit": "kg"
+    },
+    "price": 0.66
+   }
+  },
+  {
+   "score": 0.75,
+   "why": "ähnlicher Name (75 %), Packung 0.22 / 0.22 kg, Marken – / bens original",
+   "a": {
+    "retailer": "billa",
+    "sku": "billa:ben-s-original-express-reis-langkorn:0.22kg",
+    "brand": "",
+    "name": "Ben's Original Express Reis Langkorn",
+    "pack": {
+     "value": 0.22,
+     "unit": "kg"
+    },
+    "price": 2.39
+   },
+   "b": {
+    "retailer": "penny",
+    "sku": "penny:bens-original-express-reis:0.22kg",
+    "brand": "Bens Original",
+    "name": "Express Reis",
+    "pack": {
+     "value": 0.22,
+     "unit": "kg"
+    },
+    "price": 1.73
+   }
+  },
+  {
+   "score": 1,
+   "why": "ähnlicher Name (100 %), Packung 1 / 1 kg, Marken clever / chiquita",
+   "a": {
+    "retailer": "billa",
+    "sku": "billa:clever-clever-bananen:1kg",
+    "brand": "Clever",
+    "name": "Clever Bananen",
+    "pack": {
+     "value": 1,
+     "unit": "kg"
+    },
+    "price": 1.69
+   },
+   "b": {
+    "retailer": "mpreis",
+    "sku": "mpreis:chiquita-banane:1kg",
+    "brand": "Chiquita",
+    "name": "Banane",
+    "pack": {
+     "value": 1,
+     "unit": "kg"
+    },
+    "price": 2.49
+   }
+  },
+  {
+   "score": 1,
+   "why": "ähnlicher Name (100 %), Packung 1 / 1 kg, Marken ja naturlich / m bio",
+   "a": {
+    "retailer": "billa",
+    "sku": "billa:ja-natürlich-ja-natürlich-orangen:1kg",
+    "brand": "Ja! Natürlich",
+    "name": "Ja! Natürlich Orangen",
+    "pack": {
+     "value": 1,
+     "unit": "kg"
+    },
+    "price": 2.99
+   },
+   "b": {
+    "retailer": "mpreis",
+    "sku": "mpreis:m-bio-bio-orangen:1kg",
+    "brand": "M-BIO",
+    "name": "BIO Orangen",
+    "pack": {
+     "value": 1,
+     "unit": "kg"
+    },
+    "price": 2.99
+   }
+  },
+  {
+   "score": 0.75,
+   "why": "ähnlicher Name (75 %), Packung 3 / 3 stk, Marken – / m",
+   "a": {
+    "retailer": "billa",
+    "sku": "billa:da-komm-ich-her-paprika-tricolore:3stk",
+    "brand": "",
+    "name": "Da komm ich her! Paprika Tricolore",
+    "pack": {
+     "value": 3,
+     "unit": "stk"
+    },
+    "price": 2.99
+   },
+   "b": {
+    "retailer": "mpreis",
+    "sku": "mpreis:m-paprika-tricolore:3stk",
+    "brand": "M",
+    "name": "Paprika Tricolore",
+    "pack": {
+     "value": 3,
+     "unit": "stk"
+    },
+    "price": 2.99
+   }
+  },
+  {
+   "score": 1,
+   "why": "ähnlicher Name (100 %), Packung 0.5 / 0.5 kg, Marken clever / m",
+   "a": {
+    "retailer": "billa",
+    "sku": "billa:clever-clever-cherrytomaten:0.5kg",
+    "brand": "Clever",
+    "name": "Clever Cherrytomaten",
+    "pack": {
+     "value": 0.5,
+     "unit": "kg"
+    },
+    "price": 2.29
+   },
+   "b": {
+    "retailer": "mpreis",
+    "sku": "mpreis:m-cherrytomaten:0.5kg",
+    "brand": "M",
+    "name": "Cherrytomaten",
+    "pack": {
+     "value": 0.5,
+     "unit": "kg"
+    },
+    "price": 3.49
+   }
+  },
+  {
+   "score": 0.8,
+   "why": "ähnlicher Name (80 %), Packung 1 / 1 kg, Marken ja naturlich / bio vom berg",
+   "a": {
+    "retailer": "billa",
+    "sku": "billa:ja-natürlich-ja-natürlich-bio-hokkaido-kürbis:1kg",
+    "brand": "Ja! Natürlich",
+    "name": "Ja! Natürlich Bio-Hokkaido-Kürbis",
+    "pack": {
+     "value": 1,
+     "unit": "kg"
+    },
+    "price": 2.18
+   },
+   "b": {
+    "retailer": "mpreis",
+    "sku": "mpreis:bio-vom-berg-bio-kürbis-hokkaido-ca-1-stück:1kg",
+    "brand": "BIO vom BERG",
+    "name": "Bio Kürbis Hokkaido ca. 1 Stück",
+    "pack": {
+     "value": 1,
+     "unit": "kg"
+    },
+    "price": 1.49
+   }
+  },
+  {
+   "score": 1,
+   "why": "ähnlicher Name (100 %), Packung 1 / 1 kg, Marken clever / m",
+   "a": {
+    "retailer": "billa",
+    "sku": "billa:clever-clever-zucchini:1kg",
+    "brand": "Clever",
+    "name": "Clever Zucchini",
+    "pack": {
+     "value": 1,
+     "unit": "kg"
+    },
+    "price": 1.99
+   },
+   "b": {
+    "retailer": "mpreis",
+    "sku": "mpreis:m-zucchini:1kg",
+    "brand": "M",
+    "name": "Zucchini",
+    "pack": {
+     "value": 1,
+     "unit": "kg"
+    },
+    "price": 2.49
+   }
+  },
+  {
+   "score": 1,
+   "why": "ähnlicher Name (100 %), Packung 2 / 2 kg, Marken wunderlinge / jeden tag",
+   "a": {
+    "retailer": "billa",
+    "sku": "billa:wunderlinge-äpfel:2kg",
+    "brand": "",
+    "name": "Wunderlinge Äpfel",
+    "pack": {
+     "value": 2,
+     "unit": "kg"
+    },
+    "price": 2.66
+   },
+   "b": {
+    "retailer": "mpreis",
+    "sku": "mpreis:jeden-tag-apfel-beutel:2kg",
+    "brand": "Jeden Tag",
+    "name": "Apfel Beutel",
+    "pack": {
+     "value": 2,
+     "unit": "kg"
+    },
+    "price": 3.32
+   }
+  },
+  {
+   "score": 1,
+   "why": "ähnlicher Name (100 %), Packung 1 / 1 kg, Marken clever / –",
+   "a": {
+    "retailer": "billa",
+    "sku": "billa:clever-clever-birnen:1kg",
+    "brand": "Clever",
+    "name": "Clever Birnen",
+    "pack": {
+     "value": 1,
+     "unit": "kg"
+    },
+    "price": 1.99
+   },
+   "b": {
+    "retailer": "mpreis",
+    "sku": "mpreis:birnen-tasse:1kg",
+    "brand": "",
+    "name": "Birnen Tasse",
+    "pack": {
+     "value": 1,
+     "unit": "kg"
+    },
+    "price": 1.49
+   }
+  },
+  {
+   "score": 0.75,
+   "why": "ähnlicher Name (75 %), Packung 1 / 1 kg",
+   "a": {
+    "retailer": "billa",
+    "sku": "billa:da-komm-ich-her-gala-apfel-tasse-rot:1kg",
+    "brand": "",
+    "name": "Da komm ich her! 'Gala' Apfel Tasse rot",
+    "pack": {
+     "value": 1,
+     "unit": "kg"
+    },
+    "price": 2.85
+   },
+   "b": {
+    "retailer": "mpreis",
+    "sku": "mpreis:gala-apfel:1kg",
+    "brand": "",
+    "name": "Gala Apfel",
+    "pack": {
+     "value": 1,
+     "unit": "kg"
+    },
+    "price": 2.85
+   }
+  },
+  {
+   "score": 1,
+   "why": "ähnlicher Name (100 %), Packung 1 / 1 kg, Marken billa / clever",
+   "a": {
+    "retailer": "billa",
+    "sku": "billa:billa-billa-satsumas:1kg",
+    "brand": "BILLA",
+    "name": "BILLA Satsumas",
+    "pack": {
+     "value": 1,
+     "unit": "kg"
+    },
+    "price": 1.99
+   },
+   "b": {
+    "retailer": "penny",
+    "sku": "penny:clever-satsumas:1kg",
+    "brand": "Clever",
+    "name": "Satsumas",
+    "pack": {
+     "value": 1,
+     "unit": "kg"
+    },
+    "price": 1.49
+   }
+  },
+  {
+   "score": 1,
+   "why": "ähnlicher Name (100 %), Packung 1 / 1 kg, Marken billa / m",
+   "a": {
+    "retailer": "billa",
+    "sku": "billa:billa-billa-satsumas:1kg",
+    "brand": "BILLA",
+    "name": "BILLA Satsumas",
+    "pack": {
+     "value": 1,
+     "unit": "kg"
+    },
+    "price": 1.99
+   },
+   "b": {
+    "retailer": "mpreis",
+    "sku": "mpreis:m-satsumas:1kg",
+    "brand": "M",
+    "name": "Satsumas",
+    "pack": {
+     "value": 1,
+     "unit": "kg"
+    },
+    "price": 1.99
+   }
+  },
+  {
+   "score": 0.75,
+   "why": "ähnlicher Name (75 %), Packung 1 / 1 kg",
+   "a": {
+    "retailer": "billa",
+    "sku": "billa:da-komm-ich-her-gala-apfel-gelegt:1kg",
+    "brand": "",
+    "name": "Da komm ich her! 'Gala' Apfel gelegt",
+    "pack": {
+     "value": 1,
+     "unit": "kg"
+    },
+    "price": 2.85
+   },
+   "b": {
+    "retailer": "mpreis",
+    "sku": "mpreis:gala-apfel:1kg",
+    "brand": "",
+    "name": "Gala Apfel",
+    "pack": {
+     "value": 1,
+     "unit": "kg"
+    },
+    "price": 2.85
+   }
+  },
+  {
+   "score": 1,
+   "why": "ähnlicher Name (100 %), Packung 1 / 1 stk, Marken ja naturlich / echt bio",
+   "a": {
+    "retailer": "billa",
+    "sku": "billa:ja-natürlich-ja-natürlich-kresse:1stk",
+    "brand": "Ja! Natürlich",
+    "name": "Ja! Natürlich Kresse",
+    "pack": {
+     "value": 1,
+     "unit": "stk"
+    },
+    "price": 0.95
+   },
+   "b": {
+    "retailer": "penny",
+    "sku": "penny:echt-bio-kresse:1stk",
+    "brand": "ECHT BIO!",
+    "name": "Kresse",
+    "pack": {
+     "value": 1,
+     "unit": "stk"
+    },
+    "price": 0.5
+   }
+  },
+  {
+   "score": 1,
+   "why": "ähnlicher Name (100 %), Packung 0.25 / 0.25 kg",
+   "a": {
+    "retailer": "billa",
+    "sku": "billa:knollenknoblauch:0.25kg",
+    "brand": "",
+    "name": "Knollenknoblauch",
+    "pack": {
+     "value": 0.25,
+     "unit": "kg"
+    },
+    "price": 2.85
+   },
+   "b": {
+    "retailer": "penny",
+    "sku": "penny:knollenknoblauch:0.25kg",
+    "brand": "",
+    "name": "Knollenknoblauch",
+    "pack": {
+     "value": 0.25,
+     "unit": "kg"
+    },
+    "price": 1.79
+   }
+  },
+  {
+   "score": 0.75,
+   "why": "ähnlicher Name (75 %), Packung 1 / 1 kg",
+   "a": {
+    "retailer": "billa",
+    "sku": "billa:da-komm-ich-her-apfel-elstar-gelegt:1kg",
+    "brand": "",
+    "name": "Da komm ich her! Apfel 'Elstar' gelegt",
+    "pack": {
+     "value": 1,
+     "unit": "kg"
+    },
+    "price": 2.85
+   },
+   "b": {
+    "retailer": "mpreis",
+    "sku": "mpreis:elstar-apfel:1kg",
+    "brand": "",
+    "name": "Elstar Apfel",
+    "pack": {
+     "value": 1,
+     "unit": "kg"
+    },
+    "price": 2.85
+   }
+  },
+  {
+   "score": 0.75,
+   "why": "ähnlicher Name (75 %), Packung 1 / 1 kg",
+   "a": {
+    "retailer": "billa",
+    "sku": "billa:da-komm-ich-her-golden-delicious-apfel:1kg",
+    "brand": "",
+    "name": "Da komm ich her! Golden Delicious Apfel",
+    "pack": {
+     "value": 1,
+     "unit": "kg"
+    },
+    "price": 2.37
+   },
+   "b": {
+    "retailer": "mpreis",
+    "sku": "mpreis:gold-delicious-apfel:1kg",
+    "brand": "",
+    "name": "Gold Delicious Apfel",
+    "pack": {
+     "value": 1,
+     "unit": "kg"
+    },
+    "price": 2.37
+   }
+  },
+  {
+   "score": 0.75,
+   "why": "ähnlicher Name (75 %), Packung 4 / 4 stk, Marken – / m",
+   "a": {
+    "retailer": "billa",
+    "sku": "billa:zespri-kiwi-grün-essreif:4stk",
+    "brand": "",
+    "name": "Zespri Kiwi grün Essreif",
+    "pack": {
+     "value": 4,
+     "unit": "stk"
+    },
+    "price": 2.99
+   },
+   "b": {
+    "retailer": "mpreis",
+    "sku": "mpreis:m-kiwi-grün:4stk",
+    "brand": "M",
+    "name": "Kiwi Grün",
+    "pack": {
+     "value": 4,
+     "unit": "stk"
+    },
+    "price": 2.99
+   }
+  },
+  {
+   "score": 1,
+   "why": "ähnlicher Name (100 %), Packung 0.125 / 0.125 kg",
+   "a": {
+    "retailer": "billa",
+    "sku": "billa:brombeeren:0.125kg",
+    "brand": "",
+    "name": "Brombeeren",
+    "pack": {
+     "value": 0.125,
+     "unit": "kg"
+    },
+    "price": 3.49
+   },
+   "b": {
+    "retailer": "mpreis",
+    "sku": "mpreis:brombeeren:0.125kg",
+    "brand": "",
+    "name": "Brombeeren",
+    "pack": {
+     "value": 0.125,
+     "unit": "kg"
+    },
+    "price": 3.99
+   }
+  },
+  {
+   "score": 1,
+   "why": "ähnlicher Name (100 %), Packung 0.2 / 0.2 kg, Marken clever / backerkronung",
+   "a": {
+    "retailer": "billa",
+    "sku": "billa:clever-clever-linzerstangerl:0.2kg",
+    "brand": "Clever",
+    "name": "Clever Linzerstangerl",
+    "pack": {
+     "value": 0.2,
+     "unit": "kg"
+    },
+    "price": 1.99
+   },
+   "b": {
+    "retailer": "penny",
+    "sku": "penny:bäckerkrönung-linzerstangerl:0.2kg",
+    "brand": "BÄCKERKRÖNUNG",
+    "name": "Linzerstangerl",
+    "pack": {
+     "value": 0.2,
+     "unit": "kg"
+    },
+    "price": 1.49
+   }
+  },
+  {
+   "score": 1,
+   "why": "ähnlicher Name (100 %), Packung 1 / 1 kg, Marken clever / ich bin osterreich",
+   "a": {
+    "retailer": "billa",
+    "sku": "billa:clever-clever-faschiertes-gemischt:1kg",
+    "brand": "Clever",
+    "name": "Clever Faschiertes Gemischt",
+    "pack": {
+     "value": 1,
+     "unit": "kg"
+    },
+    "price": 8.49
+   },
+   "b": {
+    "retailer": "penny",
+    "sku": "penny:ich-bin-österreich-faschiertes-gemischt:1kg",
+    "brand": "Ich bin Österreich",
+    "name": "Faschiertes gemischt",
+    "pack": {
+     "value": 1,
+     "unit": "kg"
+    },
+    "price": 4.99
+   }
+  },
+  {
+   "score": 1,
+   "why": "ähnlicher Name (100 %), Packung 0.5 / 0.5 kg, Marken clever / ich bin osterreich",
+   "a": {
+    "retailer": "billa",
+    "sku": "billa:clever-clever-rinderfaschiertes:0.5kg",
+    "brand": "Clever",
+    "name": "Clever Rinderfaschiertes",
+    "pack": {
+     "value": 0.5,
+     "unit": "kg"
+    },
+    "price": 6.49
+   },
+   "b": {
+    "retailer": "penny",
+    "sku": "penny:ich-bin-österreich-rinderfaschiertes:0.5kg",
+    "brand": "Ich bin Österreich",
+    "name": "Rinderfaschiertes",
+    "pack": {
+     "value": 0.5,
+     "unit": "kg"
+    },
+    "price": 5.99
+   }
+  },
+  {
+   "score": 1,
+   "why": "ähnlicher Name (100 %), Packung 1 / 1 kg, Marken clever / –",
+   "a": {
+    "retailer": "billa",
+    "sku": "billa:clever-clever-schweinslungenbraten:1kg",
+    "brand": "Clever",
+    "name": "Clever Schweinslungenbraten",
+    "pack": {
+     "value": 1,
+     "unit": "kg"
+    },
+    "price": 12.98
+   },
+   "b": {
+    "retailer": "penny",
+    "sku": "penny:schweinslungenbraten:1kg",
+    "brand": "",
+    "name": "Schweinslungenbraten",
+    "pack": {
+     "value": 1,
+     "unit": "kg"
+    },
+    "price": 7.49
+   }
+  },
+  {
+   "score": 1,
+   "why": "ähnlicher Name (100 %), Packung 0.55 / 0.55 kg, Marken clever / delikatessa",
+   "a": {
+    "retailer": "billa",
+    "sku": "billa:clever-clever-putenschnitzel:0.55kg",
+    "brand": "Clever",
+    "name": "Clever Putenschnitzel",
+    "pack": {
+     "value": 0.55,
+     "unit": "kg"
+    },
+    "price": 8.24
+   },
+   "b": {
+    "retailer": "penny",
+    "sku": "penny:delikatessa-putenschnitzel:0.55kg",
+    "brand": "Delikatessa",
+    "name": "Putenschnitzel",
+    "pack": {
+     "value": 0.55,
+     "unit": "kg"
+    },
+    "price": 5.99
+   }
+  },
+  {
+   "score": 1,
+   "why": "ähnlicher Name (100 %), Packung 0.35 / 0.4 kg, Marken ich bin osterreich / m",
+   "a": {
+    "retailer": "penny",
+    "sku": "penny:ich-bin-österreich-midi-rispentomaten:0.35kg",
+    "brand": "Ich bin Österreich",
+    "name": "Midi Rispentomaten",
+    "pack": {
+     "value": 0.35,
+     "unit": "kg"
+    },
+    "price": 2.39
+   },
+   "b": {
+    "retailer": "mpreis",
+    "sku": "mpreis:m-midi-rispentomaten:0.4kg",
+    "brand": "M",
+    "name": "Midi Rispentomaten",
+    "pack": {
+     "value": 0.4,
+     "unit": "kg"
+    },
+    "price": 3.29
+   }
+  },
+  {
+   "score": 1,
+   "why": "ähnlicher Name (100 %), Packung 2 / 2 kg, Marken marktliebe / m",
+   "a": {
+    "retailer": "penny",
+    "sku": "penny:marktliebe-orangen:2kg",
+    "brand": "MARKTLIEBE",
+    "name": "Orangen",
+    "pack": {
+     "value": 2,
+     "unit": "kg"
+    },
+    "price": 2.99
+   },
+   "b": {
+    "retailer": "mpreis",
+    "sku": "mpreis:m-orangen:2kg",
+    "brand": "M",
+    "name": "Orangen",
+    "pack": {
+     "value": 2,
+     "unit": "kg"
+    },
+    "price": 3.99
+   }
+  },
+  {
+   "score": 1,
+   "why": "ähnlicher Name (100 %), Packung 1 / 1 kg, Marken clever / m",
+   "a": {
+    "retailer": "penny",
+    "sku": "penny:clever-satsumas:1kg",
+    "brand": "Clever",
+    "name": "Satsumas",
+    "pack": {
+     "value": 1,
+     "unit": "kg"
+    },
+    "price": 1.49
+   },
+   "b": {
+    "retailer": "mpreis",
+    "sku": "mpreis:m-satsumas:1kg",
+    "brand": "M",
+    "name": "Satsumas",
+    "pack": {
+     "value": 1,
+     "unit": "kg"
+    },
+    "price": 1.99
+   }
+  }
+ ]
+}

@@ -20,6 +20,8 @@ export type Observation = {
   sku: string
   name: string
   brand: string
+  /** barcode, when the page shows one (dm does on the detail page) */
+  ean?: string
   pack: Amount
   price: number
   /** regular price, if the retailer shows a crossed-out one */

@@ -30,6 +30,8 @@ Rechnung teilen und ein Preisvergleich über die Märkte in der Nähe.
   pro Zeile) samt `<Tag>.report.json` (was gelesen wurde, was auffällt).
   Lauf: `NODE_USE_ENV_PROXY=1 NODE_PATH=$(npm root -g) node --experimental-strip-types tools/ingest.mts`
   (braucht playwright).
+- `lib/match/match.ts` + `tools/match.mts` — Produktzuordnung über Ketten hinweg
+  (identisch / vergleichbar, Prüfliste, Entscheidungen von Hand). Siehe `docs/produktzuordnung.md`.
 - `design/layouts.html` — drei Layout-Entwürfe zum Öffnen im Browser.
 
 ## Geplant
