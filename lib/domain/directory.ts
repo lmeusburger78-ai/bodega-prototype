@@ -52,7 +52,7 @@ export const CHAINS: Chain[] = [
   { id: 'billa', name: 'BILLA / BILLA PLUS', group: 'supermarket', coverage: 'full', priceUrl: 'https://shop.billa.at/', showsUnitPrice: true, loyalty: 'jö Bonus Club', stickers: true, verified: true, verifiedOn: '2026-11-20',
     note: 'Direkt geprüft (Obst & Gemüse, 315 Artikel laut Seite, mehrere Seiten): Preise ohne Login, Losware "per 1 kg", Packungen mit Grundpreis. Preise des Online-Shops; ob gleich wie in der Filiale, nicht geprüft. robots.txt ohne Sperren.' },
   { id: 'spar', name: 'SPAR / EUROSPAR / INTERSPAR', group: 'supermarket', coverage: 'full', priceUrl: 'https://www.spar.at/produktwelt/lebensmittel', showsUnitPrice: true, loyalty: 'SPAR-App', stickers: true, verified: false,
-    note: 'robots.txt erlaubt alles, aber www.spar.at/produktwelt liefert für automatische Abrufe 403. Inhalt nicht bestätigt. Sperre nicht umgehen: bei SPAR um Datenzugang anfragen.' },
+    note: 'Cloudflare-Prüfseite ("Just a moment…") vor spar.at und interspar.at, nur robots.txt und Sitemap sind abrufbar. Inhalt nicht bestätigt. Prüfung nicht umgehen: bei SPAR um Datenzugang anfragen (Entwurf: docs/anfrage-datenzugang.md).' },
   { id: 'mpreis', name: 'MPREIS', group: 'supermarket', coverage: 'full', verified: false,
     note: 'robots.txt erlaubt alles außer /search/ und Filterlinks (KI-Crawler ausdrücklich erlaubt). www.mpreis.at/shop gibt es nicht (404), die richtige Shop-Adresse ist noch zu finden.' },
   { id: 'adeg', name: 'ADEG', group: 'supermarket', coverage: 'unknown', verified: false,
@@ -74,7 +74,7 @@ export const CHAINS: Chain[] = [
 
   // reine Online-Supermärkte (keine Filialen; Lieferkosten extra)
   { id: 'gurkerl', name: 'Gurkerl', group: 'online', coverage: 'unknown', verified: false,
-    note: 'robots.txt sperrt /regal/* (die Warenregale) für alle Crawler, die nicht ausdrücklich erlaubt sind. Ohne Zustimmung nicht auslesen: um Datenzugang anfragen.' },
+    note: 'robots.txt sperrt /regal/* (die Warenregale) für alle Crawler, die nicht ausdrücklich erlaubt sind. Startseite und Kategorien (/c26-obst-gemuese …) sind abrufbar. Ohne Zustimmung die Regale nicht auslesen: um Datenzugang anfragen.' },
   { id: 'alfies', name: 'Alfies', group: 'online', coverage: 'full', priceUrl: 'https://www.alfies.at/', verified: false,
     note: 'robots.txt erlaubt alles. Startseite ohne Preise im Abruf (Skript), Sortiment noch zu prüfen. Reiner Lieferdienst, keine Filiale.' },
 ]
