@@ -32,6 +32,10 @@ Rechnung teilen und ein Preisvergleich über die Märkte in der Nähe.
   (braucht playwright).
 - `lib/match/match.ts` + `tools/match.mts` — Produktzuordnung über Ketten hinweg
   (identisch / vergleichbar, Prüfliste, Entscheidungen von Hand). Siehe `docs/produktzuordnung.md`.
+- `lib/domain/recipePrice.ts` + `tools/recipe-prices.mts` — Preis pro Portion aus echten
+  Marktpreisen: nur gefundene Produkte bekommen einen Preis, sonst „ab €x“ und die fehlenden
+  Zutaten mit Kommentar für die Einkaufsliste. `recipes.ts` enthält `suggestRecipes` (bis zu drei
+  Vorschläge für „Was hast du da?“).
 - `design/layouts.html` — drei Layout-Entwürfe zum Öffnen im Browser.
 
 ## Geplant

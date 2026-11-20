@@ -45,7 +45,8 @@ const STOP = new Set(['der', 'die', 'das', 'und', 'mit', 'von', 'in', 'aus', 'oh
 /** lower case, no accents, ß→ss, only letters and digits */
 export const fold = (s: string) => s.toLowerCase().replace(/ß/g, 'ss').normalize('NFD').replace(/\p{M}/gu, '').replace(/&/g, ' ').replace(/[^a-z0-9]+/g, ' ').trim()
 
-const stem = (w: string) => (w.length > 5 ? w.replace(/(en|er|e|n|s)$/, '') : w)
+// plural endings only; "er" is not stripped: it would turn Kräuter into Kraut
+export const stem = (w: string) => (w.length > 5 ? w.replace(/(en|e|n|s)$/, '') : w)
 
 export type Lexicon = Set<string>
 /** Brands seen in the data itself: every observation that carries an explicit brand teaches one. */

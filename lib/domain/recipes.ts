@@ -75,3 +75,32 @@ function toBase(qty: number | null, unit: string): { qty: number; unit: 'kg' | '
   }
 }
 const round = (n: number) => Math.round(n * 1000) / 1000
+
+export type Suggestion = { recipe: Recipe; hits: number; mainHits: number; score: number; price: number | null }
+
+/**
+ * "Was hast du da?": recipes for the chosen main ingredients.
+ * Pantry staples (salt, oil, flour, spices) cannot be chosen and do not count.
+ * Score = hits, and a hit on a main ingredient counts double.
+ * `top`: up to three recipes that share the highest score, cheaper first.
+ * `rest`: all other matches, best score first, then cheaper.
+ */
+export function suggestRecipes(data: RecipeData, chosen: string[], priceOf: (r: Recipe) => number | null = () => null, maxTop = 3) {
+  const staple = new Set(data.ingredientCatalog.filter(c => c.pantryStaple).map(c => c.productKey))
+  const want = new Set(chosen.filter(k => !staple.has(k)))
+  const all: Suggestion[] = []
+  if (!want.size) return { top: [] as Suggestion[], rest: [] as Suggestion[] }
+  for (const recipe of data.recipes) {
+    const have = new Set(recipe.ingredients.map(i => i.productKey))
+    const hits = [...want].filter(k => have.has(k)).length
+    if (!hits) continue
+    const mainHits = [...want].filter(k => recipe.mainIngredients.includes(k)).length
+    all.push({ recipe, hits, mainHits, score: hits + mainHits, price: priceOf(recipe) })
+  }
+  const byPrice = (a: Suggestion, b: Suggestion) => (a.price ?? Infinity) - (b.price ?? Infinity)
+  all.sort((a, b) => b.score - a.score || byPrice(a, b))
+  const best = all[0]?.score
+  const tied = all.filter(s => s.score === best)
+  const top = tied.slice(0, maxTop)
+  return { top, rest: all.filter(s => !top.includes(s)) }
+}
