@@ -131,9 +131,22 @@ export function candidates(item: CatalogItem, offers: Observation[], dim: Dim, c
   })
 }
 
+// the filtered list is cached per (offers, day) so the brand index is built once per day, not once per recipe
+const byDay = new WeakMap<Observation[], Map<string, Observation[]>>()
+function offersFor(all: Observation[], day: string): Observation[] {
+  let m = byDay.get(all); if (!m) byDay.set(all, (m = new Map()))
+  let list = m.get(day); if (!list) m.set(day, (list = all.filter(o => validOn(o, day))))
+  return list
+}
+
 const unitPrice = (o: Observation) => o.price / o.pack.value
 
-export function priceRecipe(recipe: Recipe, servings: number, data: RecipeData, offers: Observation[]): RecipePrice {
+/** An offer counts on a day only if its promotion period covers that day (articles without a period always count). */
+export const validOn = (o: Observation, day: string) => (!o.promoFrom || o.promoFrom <= day) && (!o.promoUntil || o.promoUntil >= day)
+
+/** `day` (YYYY-MM-DD): prices for that day. Promotions that start later or ended are left out. */
+export function priceRecipe(recipe: Recipe, servings: number, data: RecipeData, allOffers: Observation[], day?: string): RecipePrice {
+  const offers = day ? offersFor(allOffers, day) : allOffers
   const cat = new Map(data.ingredientCatalog.map(c => [c.productKey, c]))
   const f = servings / recipe.servings
   const lines: PricedLine[] = []

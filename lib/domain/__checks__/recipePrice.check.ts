@@ -51,6 +51,12 @@ assert.deepEqual([none.perServing, none.label, priceLabel(none)], [null, 'kein P
 const two = priceRecipe(r01, 4, data, [ob('Hokkaido Kürbis', 0.75, 'kg', 1.5)]).lines.find(l => l.ingredient.productKey === 'pumpkin-hokkaido')!
 assert.deepEqual([two.cost, two.buyCost], [2, 3])
 
+// promotions that start later do not count today, but on their day
+const later = { ...ob('Hokkaido Kürbis', 1, 'kg', 0.99), promoFrom: '2026-11-26', promoUntil: '2026-12-02' }
+const normal = ob('Hokkaido Kürbis', 1, 'kg', 2.18)
+const pumpkin = (day: string) => priceRecipe(r01, 4, data, [later, normal], day).lines.find(l => l.ingredient.productKey === 'pumpkin-hokkaido')!.cost
+assert.equal(pumpkin('2026-11-20'), 2.18); assert.equal(pumpkin('2026-11-27'), 0.99); assert.equal(pumpkin('2026-12-03'), 2.18)
+
 // suggestions: staples do not count, main ingredient counts double, max three with the top score
 const s = suggestRecipes(data, ['pumpkin-hokkaido', 'salt'])
 assert.ok(s.top.length >= 1 && s.top.length <= 3)

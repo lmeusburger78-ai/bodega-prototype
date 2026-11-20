@@ -272,3 +272,17 @@ bei dm nicht in den Daten, die Gruppe ist daher dort Bundesland allein.
 
 `data/stores/dm.json`: Adresse, Bundesland, Koordinaten, Öffnungszeiten, Schließtage. Gelesen wird,
 was die Filialseite selbst beim Laden abruft (`tools/stores-dm.mts`), 376 Seiten aus dm's Sitemap.
+
+## Rezeptpreise (Stand 20.11.2026)
+
+`data/recipe-prices/2026-11-20.json`, erzeugt mit `tools/recipe-prices.mts`.
+Aktionen zählen nur an ihren Tagen (`validOn`): Eine Penny-Aktion ab 26.11. wird heute nicht eingerechnet.
+
+- 331 Rezepte, davon 211 mit mindestens einem Preis, **1 vollständig** bepreist.
+- 304 von 2.187 Zutaten (14 %, ohne Vorrat) haben einen Preis. Gründe für fehlende: kein Stückangebot
+  (698), kein Gewichtsangebot (531), kein Volumenangebot (146), Einheit nicht sicher umrechenbar
+  (467: Esslöffel, Bund, Zweig …).
+- **Der Anteil ist klein, weil nur ein Ausschnitt der Kategorien von 5 Ketten geladen ist.** Mit dem
+  ganzen Sortiment steigt er deutlich. Die Genauigkeit wurde bewusst vor die Trefferquote gestellt:
+  Beim ersten Versuch mit lockerer Zuordnung kamen Fehlzuordnungen vor (Butter → Croissant-Teig,
+  Marmelade → Krapfen, Rinderhaxe → Tierfutter, Rote Rübe → Heringssalat), jetzt werden sie ausgeschlossen.
