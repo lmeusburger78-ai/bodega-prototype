@@ -3,7 +3,7 @@
 // store page itself fetches: address, Bundesland, coordinates, opening hours, closing days.
 // Writes data/stores/dm.json. One page at a time, 1.5 s apart.
 import { createRequire } from 'node:module'
-import { writeFileSync } from 'node:fs'
+import { writeFileSync, readFileSync, existsSync } from 'node:fs'
 import type { Branch, OpeningHours } from '../lib/domain/stores.ts'
 
 const UA = 'BodegaPrototype/0.1 (personal price-comparison prototype)'
@@ -14,12 +14,20 @@ console.log('Filialseiten in der Sitemap:', urls.length)
 
 const require = createRequire(import.meta.url)
 const { chromium } = require('playwright')
-const browser = await chromium.launch()
-const ctx = await browser.newContext({ locale: 'de-AT' })
-const branches: Branch[] = [], failed: string[] = []
+// resume: stores already in the file are skipped; the browser is restarted every 20 pages (it crashed after 25 once)
+const branches: Branch[] = existsSync('data/stores/dm.json') ? JSON.parse(readFileSync('data/stores/dm.json', 'utf8')) : []
+const failed: string[] = []
+const have = new Set(branches.map(b => b.id))
+let browser = await chromium.launch(), ctx = await browser.newContext({ locale: 'de-AT' }), sinceStart = 0
+const restart = async () => { await browser.close().catch(() => {}); browser = await chromium.launch(); ctx = await browser.newContext({ locale: 'de-AT' }); sinceStart = 0 }
 
 for (const [i, url] of urls.entries()) {
-  const p = await ctx.newPage()
+  const sid = 'dm:' + url.match(/\/store\/([a-z0-9]+)\//)![1].toUpperCase()
+  if (have.has(sid)) continue
+  if (sinceStart >= 20) await restart()
+  sinceStart++
+  let p
+  try { p = await ctx.newPage() } catch { await restart(); p = await ctx.newPage() }
   let item: any = null
   p.on('response', async r => { if (/\/api\/v2\/stores\/item\//i.test(r.url())) { try { item = await r.json() } catch { /* ignore */ } } })
   try {
@@ -41,7 +49,7 @@ for (const [i, url] of urls.entries()) {
   if ((i + 1) % 25 === 0) { console.log(`${i + 1}/${urls.length} geladen, ${failed.length} ohne Daten`); writeFileSync('data/stores/dm.json', JSON.stringify(branches)) }
   await new Promise(r => setTimeout(r, 1500))
 }
-await browser.close()
+await browser.close().catch(() => {})
 writeFileSync('data/stores/dm.json', JSON.stringify(branches))
 writeFileSync('data/stores/dm.report.json', JSON.stringify({ date: today, sitemap: urls.length, loaded: branches.length, failed }, null, 1))
 console.log('fertig:', branches.length, 'Filialen,', failed.length, 'ohne Daten')
